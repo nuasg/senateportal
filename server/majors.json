@@ -1,0 +1,890 @@
+[
+  {
+    "symbol": "JOUR",
+    "subjects": [
+      {
+        "symbol": "EDIT",
+        "name": "Editorial"
+      },
+      {
+        "symbol": "IMC",
+        "name": "Integrated Marketing Communications"
+      },
+      {
+        "symbol": "JOUR",
+        "name": "Journalism"
+      }
+    ],
+    "name": "Medill School of Journalism"
+  },
+  {
+    "symbol": "KGSM",
+    "subjects": [
+      {
+        "symbol": "KELLG_CP",
+        "name": "Kellogg Certificate Program for Undergraduates"
+      },
+      {
+        "symbol": "KELLG_FE",
+        "name": "Financial Economics"
+      },
+      {
+        "symbol": "KELLG_MA",
+        "name": "Managerial Analytics"
+      }
+    ],
+    "name": "J L Kellogg  School Management"
+  },
+  {
+    "symbol": "MEAS",
+    "subjects": [
+      {
+        "symbol": "BMD_ENG",
+        "name": "Biomedical Engineering"
+      },
+      {
+        "symbol": "CHEM_ENG",
+        "name": "Chemical Engineering"
+      },
+      {
+        "symbol": "CIS",
+        "name": "Computer Information Systems"
+      },
+      {
+        "symbol": "CIV_ENG",
+        "name": "Civil Engineering"
+      },
+      {
+        "symbol": "CIV_ENV",
+        "name": "Civil and Environmental Engineering"
+      },
+      {
+        "symbol": "COMP_SCI",
+        "name": "Computer Science"
+      },
+      {
+        "symbol": "COOP",
+        "name": "Cooperative Engineering Education"
+      },
+      {
+        "symbol": "CRDV",
+        "name": "Career Development"
+      },
+      {
+        "symbol": "DSGN",
+        "name": "Segal Design Institute"
+      },
+      {
+        "symbol": "ECE",
+        "name": "Electrical & Computer Engineering"
+      },
+      {
+        "symbol": "EECS",
+        "name": "Electrical Engineering & Computer Science"
+      },
+      {
+        "symbol": "ENTREP",
+        "name": "Entrepreneurship & Innovation"
+      },
+      {
+        "symbol": "ES_APPM",
+        "name": "Engineering Science & Applied Math"
+      },
+      {
+        "symbol": "GEN_ENG",
+        "name": "General Engineering"
+      },
+      {
+        "symbol": "IDEA",
+        "name": "Institute for Design Engineering & Applications"
+      },
+      {
+        "symbol": "IEMS",
+        "name": "Industrial Engineering & Management Sciences"
+      },
+      {
+        "symbol": "INF_TECH",
+        "name": "Information Technology"
+      },
+      {
+        "symbol": "ISEN",
+        "name": "Initiative for Sustainability & Energy at NU"
+      },
+      {
+        "symbol": "LDRSHP",
+        "name": "Center for Leadership"
+      },
+      {
+        "symbol": "MAT_SCI",
+        "name": "Materials Science & Engineering"
+      },
+      {
+        "symbol": "MBIOTECH",
+        "name": "Masters in Biotechnology Program"
+      },
+      {
+        "symbol": "MECH_ENG",
+        "name": "Mechanical Engineering"
+      },
+      {
+        "symbol": "MPD",
+        "name": "Master of Product Development"
+      },
+      {
+        "symbol": "MPPA",
+        "name": "Master of Public Policy & Administration"
+      },
+      {
+        "symbol": "MSIA",
+        "name": "Master of Science in Analytics"
+      },
+      {
+        "symbol": "PRDV",
+        "name": "Personal Development"
+      },
+      {
+        "symbol": "PROJ_MGT",
+        "name": "Project Management"
+      },
+      {
+        "symbol": "PSED",
+        "name": "Predictive Science and Engineering"
+      }
+    ],
+    "name": "McCormick School of Engineering and Applied Science"
+  },
+  {
+    "symbol": "MUSIC",
+    "subjects": [
+      {
+        "symbol": "CONDUCT",
+        "name": "Conducting"
+      },
+      {
+        "symbol": "GEN_MUS",
+        "name": "General Music"
+      },
+      {
+        "symbol": "JAZZ_ST",
+        "name": "Jazz Studies"
+      },
+      {
+        "symbol": "MUS_COMP",
+        "name": "Music Composition"
+      },
+      {
+        "symbol": "MUS_GRD",
+        "name": "Music Graduate"
+      },
+      {
+        "symbol": "MUSIC",
+        "name": "Music"
+      },
+      {
+        "symbol": "MUSIC_ED",
+        "name": "Music Education"
+      },
+      {
+        "symbol": "MUSICOL",
+        "name": "Musicology"
+      },
+      {
+        "symbol": "MUS_TECH",
+        "name": "Music Technology"
+      },
+      {
+        "symbol": "MUS_THRY",
+        "name": "Music Theory"
+      },
+      {
+        "symbol": "MUS_WKSP",
+        "name": "Music Workshop"
+      },
+      {
+        "symbol": "PIANO",
+        "name": "Piano"
+      },
+      {
+        "symbol": "STRINGS",
+        "name": "String Instruments"
+      },
+      {
+        "symbol": "VOICE",
+        "name": "Voice & Opera"
+      },
+      {
+        "symbol": "WIND_PER",
+        "name": "Wind & Percussion"
+      }
+    ],
+    "name": "Bienen School of Music"
+  },
+  {
+    "symbol": "SESP",
+    "subjects": [
+      {
+        "symbol": "ALT_CERT",
+        "name": "Alternative Certification"
+      },
+      {
+        "symbol": "HDPS",
+        "name": "Human Development & Psychological Services"
+      },
+      {
+        "symbol": "HDSP",
+        "name": "Human Development & Social Policy"
+      },
+      {
+        "symbol": "LOC",
+        "name": "Learning & Organizational Change"
+      },
+      {
+        "symbol": "LRN_SCI",
+        "name": "Learning Sciences"
+      },
+      {
+        "symbol": "MS_ED",
+        "name": "MS in Education & Social Policy"
+      },
+      {
+        "symbol": "MS_HE",
+        "name": "MS in Higher Education Administration and Policy"
+      },
+      {
+        "symbol": "MS_LOC",
+        "name": "Learning & Organizational Change"
+      },
+      {
+        "symbol": "SESP",
+        "name": "School of Education & Social Policy Core"
+      },
+      {
+        "symbol": "SOC_POL",
+        "name": "Social Policy"
+      },
+      {
+        "symbol": "TEACH_ED",
+        "name": "Teacher Education"
+      }
+    ],
+    "name": "School of Educ & Social Policy"
+  },
+  {
+    "symbol": "SPCH",
+    "subjects": [
+      {
+        "symbol": "AAL",
+        "name": "African and Asian Languages"
+      },
+      {
+        "symbol": "ANIM_ART",
+        "name": "Animate Arts"
+      },
+      {
+        "symbol": "ANTHRO",
+        "name": "Anthropology"
+      },
+      {
+        "symbol": "CAT",
+        "name": "Center for Art & Technology"
+      },
+      {
+        "symbol": "CMN",
+        "name": "Communication Related Courses"
+      },
+      {
+        "symbol": "COMM_ST",
+        "name": "Communication Studies"
+      },
+      {
+        "symbol": "CSD",
+        "name": "Communication Sciences and Disorders"
+      },
+      {
+        "symbol": "DANCE",
+        "name": "Dance"
+      },
+      {
+        "symbol": "ENGLISH",
+        "name": "English"
+      },
+      {
+        "symbol": "GEN_CMN",
+        "name": "General Communication & Introductory Courses"
+      },
+      {
+        "symbol": "GEN_LA",
+        "name": "General Liberal Arts"
+      },
+      {
+        "symbol": "HISTORY",
+        "name": "History"
+      },
+      {
+        "symbol": "HLTH_COM",
+        "name": "Health Communication"
+      },
+      {
+        "symbol": "LDRSHP",
+        "name": "Center for Leadership"
+      },
+      {
+        "symbol": "LING",
+        "name": "Linguistics"
+      },
+      {
+        "symbol": "LIT",
+        "name": "Literature"
+      },
+      {
+        "symbol": "MIT",
+        "name": "Media Industries and Technologies"
+      },
+      {
+        "symbol": "MSC",
+        "name": "Master of Science in Communication"
+      },
+      {
+        "symbol": "MSLCE",
+        "name": "MS Leadership for Creative Enterprises"
+      },
+      {
+        "symbol": "MTS",
+        "name": "Media, Technology & Society"
+      },
+      {
+        "symbol": "PERF_ST",
+        "name": "Performance Studies"
+      },
+      {
+        "symbol": "PHIL",
+        "name": "Philosophy"
+      },
+      {
+        "symbol": "POLI_SCI",
+        "name": "Political Science"
+      },
+      {
+        "symbol": "PSYCH",
+        "name": "Psychology"
+      },
+      {
+        "symbol": "RTVF",
+        "name": "Radio/Television/Film"
+      },
+      {
+        "symbol": "SOCIOL",
+        "name": "Sociology"
+      },
+      {
+        "symbol": "TH&DRAMA",
+        "name": "Theatre & Drama"
+      },
+      {
+        "symbol": "THEATRE",
+        "name": "Theatre"
+      }
+    ],
+    "name": "School of Communication"
+  },
+  {
+    "symbol": "TGS",
+    "subjects": [
+      {
+        "symbol": "APP_PHYS",
+        "name": "Applied Physics"
+      },
+      {
+        "symbol": "BIOETHIC",
+        "name": "Medical Humanities & Bioethics"
+      },
+      {
+        "symbol": "CBB",
+        "name": "Computational Biology & Bioinformatics"
+      },
+      {
+        "symbol": "CHSS",
+        "name": "Comparative & Historical Social Science"
+      },
+      {
+        "symbol": "CIC",
+        "name": "CIC Traveling Scholar"
+      },
+      {
+        "symbol": "CIS",
+        "name": "Computer Information Systems"
+      },
+      {
+        "symbol": "CLIN_EMB",
+        "name": "Clinical Embryology"
+      },
+      {
+        "symbol": "CLIN_PSY",
+        "name": "Clinical Psychology"
+      },
+      {
+        "symbol": "CME",
+        "name": "Chicago Metropolitan Exchange Program"
+      },
+      {
+        "symbol": "COG_SCI",
+        "name": "Cognitive Science"
+      },
+      {
+        "symbol": "COUN",
+        "name": "Counseling"
+      },
+      {
+        "symbol": "COUN_PSY",
+        "name": "Counseling Psychology"
+      },
+      {
+        "symbol": "CRD",
+        "name": "Comparative Race and Diaspora"
+      },
+      {
+        "symbol": "EECS",
+        "name": "Electrical Engineering & Computer Science"
+      },
+      {
+        "symbol": "EPI_BIO",
+        "name": "Epidemiology & Biostatistics"
+      },
+      {
+        "symbol": "GENET_CN",
+        "name": "Genetic Counseling"
+      },
+      {
+        "symbol": "GNDR_ST",
+        "name": "Gender Studies"
+      },
+      {
+        "symbol": "HISTORY",
+        "name": "History"
+      },
+      {
+        "symbol": "HQS",
+        "name": "Healthcare Quality and Patient  Safety"
+      },
+      {
+        "symbol": "HSIP",
+        "name": "Health Sciences Integrated Program"
+      },
+      {
+        "symbol": "HSR",
+        "name": "Health Services and Outcomes Research"
+      },
+      {
+        "symbol": "IGP",
+        "name": "Integrated Life Sciences"
+      },
+      {
+        "symbol": "IPLS",
+        "name": "Liberal Studies"
+      },
+      {
+        "symbol": "ISEN",
+        "name": "Initiative for Sustainability & Energy at NU"
+      },
+      {
+        "symbol": "LIT",
+        "name": "Literature"
+      },
+      {
+        "symbol": "MCW",
+        "name": "Master of Creative Writing"
+      },
+      {
+        "symbol": "MDVL_ST",
+        "name": "Medieval Studies"
+      },
+      {
+        "symbol": "MHB",
+        "name": "Medical Humanities and Bioethics"
+      },
+      {
+        "symbol": "MPPA",
+        "name": "Master of Public Policy & Administration"
+      },
+      {
+        "symbol": "MSCI",
+        "name": "Master of Science in Clinical Investigation"
+      },
+      {
+        "symbol": "MS_FT",
+        "name": "MS in Marital & Family Therapy"
+      },
+      {
+        "symbol": "MSTP",
+        "name": "Medical Scientist Training"
+      },
+      {
+        "symbol": "NUIN",
+        "name": "Neuroscience"
+      },
+      {
+        "symbol": "OPNS",
+        "name": "Operations Management"
+      },
+      {
+        "symbol": "PBC",
+        "name": "Plant Biology & Conservation"
+      },
+      {
+        "symbol": "PSYCH",
+        "name": "Psychology"
+      },
+      {
+        "symbol": "PUB_HLTH",
+        "name": "Master's in Public Health"
+      },
+      {
+        "symbol": "RTVF",
+        "name": "Radio/Television/Film"
+      },
+      {
+        "symbol": "TGS",
+        "name": "TGS General Registrations"
+      }
+    ],
+    "name": "The Graduate School"
+  },
+  {
+    "symbol": "WCAS",
+    "subjects": [
+      {
+        "symbol": "AAL",
+        "name": "African and Asian Languages"
+      },
+      {
+        "symbol": "AF_AM_ST",
+        "name": "African American Studies"
+      },
+      {
+        "symbol": "AFST",
+        "name": "African Studies"
+      },
+      {
+        "symbol": "AMER_ST",
+        "name": "American Studies"
+      },
+      {
+        "symbol": "AMES",
+        "name": "Asian and Middle Eastern Studies"
+      },
+      {
+        "symbol": "ANTHRO",
+        "name": "Anthropology"
+      },
+      {
+        "symbol": "ARABIC",
+        "name": "Arabic"
+      },
+      {
+        "symbol": "ART",
+        "name": "Art Theory & Practice"
+      },
+      {
+        "symbol": "ART_HIST",
+        "name": "Art History"
+      },
+      {
+        "symbol": "ASIAN_AM",
+        "name": "Asian American Studies"
+      },
+      {
+        "symbol": "ASIAN_LC",
+        "name": "Asian Languages and Cultures"
+      },
+      {
+        "symbol": "ASIAN_ST",
+        "name": "Asian Studies"
+      },
+      {
+        "symbol": "ASTRON",
+        "name": "Astronomy"
+      },
+      {
+        "symbol": "BIOL_SCI",
+        "name": "Biological Sciences"
+      },
+      {
+        "symbol": "BUS_INST",
+        "name": "Business Institutions"
+      },
+      {
+        "symbol": "CFS",
+        "name": "Chicago Field Studies"
+      },
+      {
+        "symbol": "CHEM",
+        "name": "Chemistry"
+      },
+      {
+        "symbol": "CHINESE",
+        "name": "Chinese"
+      },
+      {
+        "symbol": "CLASSICS",
+        "name": "Classics - Readings in English"
+      },
+      {
+        "symbol": "COG_SCI",
+        "name": "Cognitive Science"
+      },
+      {
+        "symbol": "COMP_LIT",
+        "name": "Comparative Literary Studies"
+      },
+      {
+        "symbol": "DRAMA",
+        "name": "Drama"
+      },
+      {
+        "symbol": "EARTH",
+        "name": "Earth and Planetary Sciences"
+      },
+      {
+        "symbol": "ECON",
+        "name": "Economics"
+      },
+      {
+        "symbol": "ENGLISH",
+        "name": "English"
+      },
+      {
+        "symbol": "ENVR_POL",
+        "name": "Environmental Policy & Culture"
+      },
+      {
+        "symbol": "ENVR_SCI",
+        "name": "Environmental Science"
+      },
+      {
+        "symbol": "EUR_ST",
+        "name": "European Studies"
+      },
+      {
+        "symbol": "FRENCH",
+        "name": "French"
+      },
+      {
+        "symbol": "GBL_HLTH",
+        "name": "Global Health"
+      },
+      {
+        "symbol": "GEN_ENG",
+        "name": "General Engineering"
+      },
+      {
+        "symbol": "GEN_LA",
+        "name": "General Liberal Arts"
+      },
+      {
+        "symbol": "GEOG",
+        "name": "Geography"
+      },
+      {
+        "symbol": "GEOL_SCI",
+        "name": "Geological Sciences"
+      },
+      {
+        "symbol": "GERMAN",
+        "name": "German"
+      },
+      {
+        "symbol": "GNDR_ST",
+        "name": "Gender Studies"
+      },
+      {
+        "symbol": "GREEK",
+        "name": "Greek"
+      },
+      {
+        "symbol": "HEBREW",
+        "name": "Hebrew"
+      },
+      {
+        "symbol": "HINDI",
+        "name": "Hindi"
+      },
+      {
+        "symbol": "HIND_URD",
+        "name": "Hindi and Urdu"
+      },
+      {
+        "symbol": "HISTORY",
+        "name": "History"
+      },
+      {
+        "symbol": "HUM",
+        "name": "Humanities"
+      },
+      {
+        "symbol": "IBIS",
+        "name": "Interdepartmental Biological Sciences Program"
+      },
+      {
+        "symbol": "IBIS",
+        "name": "Interdisciplinary Biological Sciences Program"
+      },
+      {
+        "symbol": "INTG_SCI",
+        "name": "Integrated Science"
+      },
+      {
+        "symbol": "INTL_ST",
+        "name": "International Studies"
+      },
+      {
+        "symbol": "ISEN",
+        "name": "Initiative for Sustainability & Energy at NU"
+      },
+      {
+        "symbol": "ITALIAN",
+        "name": "Italian"
+      },
+      {
+        "symbol": "JAPANESE",
+        "name": "Japanese"
+      },
+      {
+        "symbol": "JOUR",
+        "name": "Journalism"
+      },
+      {
+        "symbol": "JWSH_ST",
+        "name": "Jewish Studies"
+      },
+      {
+        "symbol": "KOREAN",
+        "name": "Korean"
+      },
+      {
+        "symbol": "LATIN",
+        "name": "Latin"
+      },
+      {
+        "symbol": "LATIN_AM",
+        "name": "Latin American & Caribbean Studies"
+      },
+      {
+        "symbol": "LATINO",
+        "name": "Latina and Latino Studies"
+      },
+      {
+        "symbol": "LEGAL_ST",
+        "name": "Legal Studies"
+      },
+      {
+        "symbol": "LING",
+        "name": "Linguistics"
+      },
+      {
+        "symbol": "MATH",
+        "name": "Mathematics"
+      },
+      {
+        "symbol": "MENA",
+        "name": "Middle East and North African Studies"
+      },
+      {
+        "symbol": "MMSS",
+        "name": "Math Methods in the Social Sciences"
+      },
+      {
+        "symbol": "NEUROBIO",
+        "name": "Neurobiology & Physiology"
+      },
+      {
+        "symbol": "NEUROSCI",
+        "name": "Neuroscience"
+      },
+      {
+        "symbol": "PBC",
+        "name": "Plant Biology & Conservation"
+      },
+      {
+        "symbol": "PERSIAN",
+        "name": "Persian"
+      },
+      {
+        "symbol": "PHIL",
+        "name": "Philosophy"
+      },
+      {
+        "symbol": "PHYSICS",
+        "name": "Physics"
+      },
+      {
+        "symbol": "POLI_SCI",
+        "name": "Political Science"
+      },
+      {
+        "symbol": "PORT",
+        "name": "Portuguese"
+      },
+      {
+        "symbol": "PSYCH",
+        "name": "Psychology"
+      },
+      {
+        "symbol": "RELIGION",
+        "name": "Religion"
+      },
+      {
+        "symbol": "RELIGION",
+        "name": "Religious Studies"
+      },
+      {
+        "symbol": "SHC",
+        "name": "Science in Human Culture"
+      },
+      {
+        "symbol": "SLAVIC",
+        "name": "Slavic Languages & Literature"
+      },
+      {
+        "symbol": "SOCIOL",
+        "name": "Sociology"
+      },
+      {
+        "symbol": "SPANISH",
+        "name": "Spanish"
+      },
+      {
+        "symbol": "SPANPORT",
+        "name": "Spanish and Portuguese"
+      },
+      {
+        "symbol": "STAT",
+        "name": "Statistics"
+      },
+      {
+        "symbol": "SWAHILI",
+        "name": "Swahili"
+      },
+      {
+        "symbol": "TRANS",
+        "name": "Transportation"
+      },
+      {
+        "symbol": "TURKISH",
+        "name": "Turkish"
+      },
+      {
+        "symbol": "URBAN_ST",
+        "name": "Urban Studies"
+      },
+      {
+        "symbol": "WRITING",
+        "name": "Writing Arts"
+      },
+      {
+        "symbol": "YIDDISH",
+        "name": "Yiddish"
+      }
+    ],
+    "name": "Weinberg College of Arts and Sciences"
+  }
+]

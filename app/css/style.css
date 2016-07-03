@@ -1,0 +1,28 @@
+.main {
+	height: 100%;
+}
+html, body {
+	height: 100%;
+}
+.home {
+	padding-top: 100px;
+}
+.dashboard {
+	padding-top: 60px;
+}
+.dashboard h1 {
+	text-align: center;
+}
+.menu-items {
+	cursor: pointer;
+}
+.admin {
+	padding-top: 100px;
+	height: 100%;
+}
+.admin .row {
+	height: 100%;	
+}
+.admin .row .col-md-8 {
+	height: calc(100% - 100px);
+}
