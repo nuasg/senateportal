@@ -17,12 +17,9 @@ html, body {
 	cursor: pointer;
 }
 .admin {
-	padding-top: 100px;
+	padding-top: 70px;
 	height: 100%;
 }
-.admin .row {
-	height: 100%;	
-}
-.admin .row .col-md-8 {
-	height: calc(100% - 100px);
+.admin h1 {
+	text-align: center;
 }
