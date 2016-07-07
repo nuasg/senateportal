@@ -3,6 +3,7 @@ var Business = require("../models/business");
 var moment = require("moment");
 // Add
 module.exports.addbusiness = function (req, res) {
+	req.body.weekOf = moment(req.body.weekOf).startOf('week').add(3, 'days').add(19, 'hours').toJSON();
 	Business.create(req.body, function(err, event) {
 		if (err) {
 			res.sendStatus(err);
@@ -65,6 +66,7 @@ module.exports.deleteBusiness = function (req, res) {
 }
 // Update Business
 module.exports.updateBusiness = function (req, res) {
+	req.body.weekOf = moment(req.body.weekOf).startOf('week').add(3, 'days').add(19, 'hours').toJSON();
 	Business.findOneAndUpdate({ '_id': req.body._id }, req.body,
 		function (err, events ) {
 			if (err) {

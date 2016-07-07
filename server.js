@@ -13,10 +13,11 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use('/app',express.static(__dirname + "/app"));
-app.use('/node_modules',express.static(__dirname + "/node_modules"));
-app.get('/graph.json', function(req,res){
-	res.sendFile(__dirname + "/app/profile/graph.json");
-});
+app.use('/node_modules/jquery.min.js',express.static(__dirname + "/node_modules/jquery/dist/jquery.min.js"));
+app.use('/node_modules/bootstrap.js',express.static(__dirname + "/node_modules/bootstrap/dist/js/bootstrap.js"));
+app.use('/node_modules/angular.js',express.static(__dirname + "/node_modules/angular/angular.js"));
+app.use('/node_modules/angular-ui-router.js',express.static(__dirname + "/node_modules/angular-ui-router/release/angular-ui-router.js"));
+app.use('/node_modules/angular-cookies.js',express.static(__dirname + "/node_modules/angular-cookies/angular-cookies.js"));
 app.get('/', function(req,res){
 	res.sendFile(__dirname + "/index.html");
 });

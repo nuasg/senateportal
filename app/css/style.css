@@ -23,3 +23,6 @@ html, body {
 .admin h1 {
 	text-align: center;
 }
+.admin tbody .btn:first-child {
+	margin-right: 10px;
+}
