@@ -1,5 +1,5 @@
 (function(){
-	angular.module("prereqsmap",["ui.router","ngCookies"])
+	angular.module("senator",["ui.router","ngCookies"])
 		.config(function($stateProvider, $urlRouterProvider){
 			$urlRouterProvider.otherwise("/");
 			$stateProvider
@@ -14,7 +14,7 @@
 					controller: "SenateController"
 				})
 				.state("admin", {
-					url: "/admin", 
+					url: "/admin",
 					templateUrl: "app/admin/admin.html",
 					controller: "AdminController"
 				});

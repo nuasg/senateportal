@@ -1,5 +1,5 @@
 (function(){
-	angular.module("prereqsmap")
+	angular.module("senator")
 	.controller("SenateController",["$scope", "$state", "$http", "$cookies", "DataFactory", function($scope, $state, $http, $cookies, DataFactory){
 		$scope.loadSchools = function(){
 			$scope.schools = [];

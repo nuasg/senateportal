@@ -1,5 +1,5 @@
 (function(){
-	angular.module("prereqsmap")
+	angular.module("senator")
 	.controller("AdminController",["$scope", "$state", "$http", "$cookies", "DataFactory", function($scope, $state, $http, $cookies, DataFactory){
 		'use strict';
 		var init = function() {
@@ -51,7 +51,6 @@
 			$scope.delete = true;
 		}
 		$scope.confirmDelete = function (data) {
-			$scope.delete = false;
 			$('.modal').modal('hide');
 			var req = {
 				_id: data._id
@@ -62,11 +61,28 @@
 			    data: req,
 			    headers: {'Content-Type': 'application/json;charset=utf-8'}
 			}).success(function(succ){
+					$scope.delete = false;
 					init();
 				})
 				.error(function(err){
 					alert(err);
 				});	
+		}
+		$scope.deleteClose = function () {
+			$scope.delete = false;
+		}
+		$scope.saveNew = function (data) {
+			$http.post('/api/business', data)
+				.success(function(succ){
+					init();
+					alert("Legislation Saved");
+				})
+				.error(function(err){
+					alert(err);
+				});
+		}
+		$scope.clear = function () {
+			$scope.form = null;
 		}
 	}]);
 }());

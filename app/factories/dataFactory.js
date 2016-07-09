@@ -1,5 +1,5 @@
 (function(){
-	angular.module("prereqsmap")
+	angular.module("senator")
 	.factory("DataFactory",[function(){
 		var service = {};
 

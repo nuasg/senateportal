@@ -6,7 +6,7 @@ var app = express();
 var authenticationController = require("./server/controller/authentication.controller");
 var businessController = require("./server/controller/business.controller");
 
-mongoose.connect("mongodb://node:node@ds053784.mongolab.com:53784/prereqsmap");
+mongoose.connect("mongodb://senator:senator@ds015995.mlab.com:15995/senator");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -31,7 +31,7 @@ app.post("/api/business", businessController.addbusiness);
 app.get("/api/business", businessController.findAllBusiness);
 app.delete("/api/business", businessController.deleteBusiness);
 app.put("/api/business", businessController.updateBusiness);
-
+// Senate
 
 app.listen('3000', function(){
 	console.log("Listening on port 3000...");

@@ -4,6 +4,8 @@
 		<ul class="nav nav-tabs">
 		  <li class="active"><a href="admin#current" data-toggle="tab">Current Legislation</a></li>
 		  <li><a href="admin#all" data-toggle="tab">All Legislation</a></li>
+		  <li><a href="admin#attendence" data-toggle="tab">Attendence</a></li>
+		  <li><a href="admin#add" data-toggle="tab">+ Legislation</a></li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
 		  <div class="tab-pane fade active in" id="current">
@@ -39,7 +41,7 @@
 				      </td>
 				    </tr>
 				  </tbody>
-		</table>
+				</table>
 		  </div>
 		  <div class="tab-pane fade" id="all">
 				<table class="table table-striped table-hover ">
@@ -59,7 +61,7 @@
 				      <td><a href="{{row.link}}" target="_blank">{{row.link}}</a></td>
 				      <td>{{row.attendence}}</td>
 				      <td>
-				      	<div ng-if="compareDates(row.weekOf)">
+				      	<div>
 				      		<div 	class="btn btn-warning" 
 				      					data-toggle="modal" 
 				      					data-target=".modal" 
@@ -75,6 +77,58 @@
 				    </tr>
 				  </tbody>
 				</table>
+		  </div>
+		  <div class="tab-pane fade" id="add">
+		  	<div class="container-fluid">
+					<form class="form-horizontal">
+						<fieldset>
+							<legend>Add New Legislation</legend>
+							<div class="container">
+								<div class="form-group">
+									<div class="row">
+										<label class="col-lg-2 control-label">Title</label>
+										<div class="col-lg-8">
+										  <input ng-model="form.title" class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<label class="col-lg-2 control-label">Attendence Required</label>
+										<div class="col-lg-8">
+											<select ng-options="o.v as o.n for o in [{ n: 'False', v: false }, { n: 'True', v: true }]" ng-model="form.attendence" type="boolean" class="form-control"></select>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<label class="col-lg-2 control-label">Event Link</label>
+										<div class="col-lg-8">
+										  <input ng-model="form.link" class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<label class="col-lg-2 control-label">Week</label>
+										<div class="col-lg-8">
+										  <input type="date" ng-model="form.weekOf" class="form-control time">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-8 col-lg-offset-2">
+										<button type="reset" class="btn btn-default" ng-click="clear()">Cancel</button>
+										<button type="submit" class="btn btn-primary" ng-click="saveNew(form)">Submit</button>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+	      </div>
+		  </div>
+		  <div class="tab-pane fade" id="attendence">
+		  	asdfasdf
 		  </div>
 		</div>
 	</div>
@@ -127,7 +181,7 @@
 	    	"{{modal.title}}" will be deleted
 	    </div>
       <div class="modal-footer">
-	      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+	      <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="deleteClose()">Close</button>  
         <button ng-if="!delete" type="button" class="btn btn-primary" ng-click= "saveEdit(modal)">Save</button>
 				<button ng-if="delete" type="button" class="btn btn-primary" ng-click= "confirmDelete(modal)">Delete</button>
       </div>

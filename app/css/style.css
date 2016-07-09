@@ -26,3 +26,6 @@ html, body {
 .admin tbody .btn:first-child {
 	margin-right: 10px;
 }
+.admin #add .container-fluid {
+	margin-top: 20px;
+}
