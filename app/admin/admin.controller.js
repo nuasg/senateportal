@@ -6,10 +6,14 @@
 			$http.get("/api/business")
 			.success(function(data) {
 				$scope.data = data.map(function(obj){
-						obj.weekOf = new Date(obj.weekOf);
-						return obj;
+					obj.weekOf = new Date(obj.weekOf);
+					return obj;
 				});
-			});	
+			});
+			$http.get("/api/user")
+			.success(function(data) {
+				$scope.users = data;
+			});
 		}
 		init();
 		$scope.compareDates = function(chartTime) {
@@ -71,11 +75,20 @@
 		$scope.deleteClose = function () {
 			$scope.delete = false;
 		}
-		$scope.saveNew = function (data) {
-			$http.post('/api/business', data)
+		$scope.saveNew = function (data, name) {
+			if (name === "user") {
+				var url = "/api/user";
+			} else if (name === "business") {
+				var url = "/api/business";
+			}
+			$http.post(url, data)
 				.success(function(succ){
 					init();
-					alert("Legislation Saved");
+					if (name === "user") {
+						alert("User Saved!");
+					} else if (name === "business") {
+						alert("Legislation Saved");	
+					}
 				})
 				.error(function(err){
 					alert(err);
@@ -83,6 +96,11 @@
 		}
 		$scope.clear = function () {
 			$scope.form = null;
+			$scope.manage = null;
+		}
+		$scope.edit = function (row) {
+			$scope.editUser = true;
+			$scope.manage = row;
 		}
 	}]);
 }());
