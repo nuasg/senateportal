@@ -1,6 +1,6 @@
 (function(){
 	angular.module("senator")
-	.controller("AdminController",["$scope", "$state", "$http", "$cookies", "DataFactory", function($scope, $state, $http, $cookies, DataFactory){
+	.controller("AdminAgendasController",["$scope", "$state", "$http", "$cookies", "DataFactory", function($scope, $state, $http, $cookies, DataFactory){
 		'use strict';
 		var init = function() {
 			$http.get("/api/business")

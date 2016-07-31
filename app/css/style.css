@@ -7,15 +7,43 @@ html, body {
 .home {
 	padding-top: 100px;
 }
-.dashboard {
+/* Senate */
+.senate {
 	padding-top: 60px;
 }
-.dashboard h1 {
+.senate .agendas {
+	height: 95%;
+}
+.senate #dashboard h2{
 	text-align: center;
+}
+.senate .agendas .modal	a {
+	float: left;
+	color: white;
+}
+.senate .agendas iframe {
+	width: 100%;
+	height: calc(99% - 21px);
+}
+.senate .agendalist {
+	margin-top: 20px;
+}
+.senate .agendas .list-group > a {
+	cursor: pointer;
+}
+.senate .agendas .modal button {
+	opacity: 1;
+	color: white;
+	padding-right: 10px;
+}
+.live {
+	float:	right;
+	color: #56c556;
 }
 .menu-items {
 	cursor: pointer;
 }
+/* Admin */
 .admin {
 	padding-top: 70px;
 	height: 100%;

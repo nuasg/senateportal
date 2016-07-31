@@ -3,9 +3,9 @@ var Schema       = mongoose.Schema;
 
 var BusinessSchema = new Schema({
 	weekOf			: Date,
-	title				: String,
-	link				: String,
-	attendence	: Boolean,
+	title			: String,
+	link			: String,
+	attendence		: Boolean,
 	result			: Object
 })
 

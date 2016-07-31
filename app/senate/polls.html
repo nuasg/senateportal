@@ -1,0 +1,46 @@
+<div class="panel-group col-md-12 agendalist" id="accordion">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" href="senate#polls1">Legislation 1</a>
+				<div class="live">LIVE!</div>
+			</h4>
+		</div>
+		<div id="polls1" class="panel-collapse collapse">
+			<ul class="list-group">
+				<a class="list-group-item">Document</a>
+				<a class="list-group-item" data-toggle="modal" data-target="#vote">Vote</a>
+			</ul>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" href="senate#polls2">Legislation 2</a>
+			</h4>
+		</div>
+		<div id="polls2" class="panel-collapse collapse">
+			<ul class="list-group">
+				<a class="list-group-item">Document</a>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="vote">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Voting</h4>
+			</div>
+			<div class="modal-body">
+				<div class="btn-group btn-group-justified" role="group" aria-label="...">
+					<a type="button" class="btn btn-default" role="button">Yea</a>
+					<a type="button" class="btn btn-default" role="button">Nay</a>
+					<a type="button" class="btn btn-default" role="button">Abstain</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

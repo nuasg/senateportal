@@ -1,5 +1,5 @@
 {
-  "name": "planner",
+  "name": "asg-senate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,9 +14,18 @@
     "angular-ui-router": "^0.2.15",
     "body-parser": "^1.14.2",
     "bootstrap": "^3.3.6",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.4.2",
     "express": "^4.13.3",
+    "express-session": "^1.14.0",
+    "gulp": "^3.9.1",
     "jquery": "^2.2.0",
     "moment": "^2.14.1",
-    "mongoose": "^4.3.5"
+    "mongoose": "^4.3.5",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-ldapauth": "^0.5.0",
+    "path": "^0.12.7"
   }
 }

@@ -10,13 +10,31 @@
 				})
 				.state("senate", {
 					url: "/senate", 
-					templateUrl: "app/senate/senate.html",
-					controller: "SenateController"
+					views: {
+						"": {
+							templateUrl: "app/senate/senate.html"		
+						},
+						"agendas@senate": {
+							templateUrl: "app/senate/agendas.html"
+						},
+						"docs@senate": {
+							templateUrl: "app/senate/docs.html"
+						},
+						"polls@senate": {
+							templateUrl: "app/senate/polls.html"
+						}
+					}
 				})
 				.state("admin", {
 					url: "/admin",
-					templateUrl: "app/admin/admin.html",
-					controller: "AdminController"
+					views: {
+						"": {
+							templateUrl: "app/admin/admin.html"
+						},
+						"agendas@admin": {
+							templateUrl: "app/admin/agendas.html"
+						}
+					}
 				});
 		})
 }());
