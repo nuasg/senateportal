@@ -1,5 +1,5 @@
 (function(){
-	angular.module("senator",["ui.router","ngCookies"])
+	angular.module("senator",["ui.router"])
 		.config(function($stateProvider, $urlRouterProvider){
 			$urlRouterProvider.otherwise("/");
 			$stateProvider

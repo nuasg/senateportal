@@ -1,6 +1,6 @@
 (function(){
 	angular.module("senator")
-	.controller("HomeController",["$scope", "$state", "$http", "$cookies", "DataFactory", function($scope, $state, $http, $cookies, DataFactory){
+	.controller("HomeController",["$scope", "$state", "$http", "DataFactory", function($scope, $state, $http, DataFactory){
 		$scope.submit = function(){
 			if ($scope.role === "Senator") {
 				$state.go("senate");

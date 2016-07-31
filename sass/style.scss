@@ -1,0 +1,57 @@
+html, body, .main {
+	height: 100%;
+}
+.home {
+	padding-top: 100px;
+}
+/* Senate */
+.senate {
+	padding-top: 60px;
+
+	.agendas {
+		height: 95%;	
+	}
+	#dashboard h2 {
+		text-align: center;	
+	}
+}
+.senate .agendas .modal	a {
+	float: left;
+	color: white;
+}
+.senate .agendas iframe {
+	width: 100%;
+	height: calc(99% - 21px);
+}
+.senate .agendalist {
+	margin-top: 20px;
+}
+.senate .agendas .list-group > a {
+	cursor: pointer;
+}
+.senate .agendas .modal button {
+	opacity: 1;
+	color: white;
+	padding-right: 10px;
+}
+.live {
+	float:	right;
+	color: #56c556;
+}
+.menu-items {
+	cursor: pointer;
+}
+/* Admin */
+.admin {
+	padding-top: 70px;
+	height: 100%;
+}
+.admin h1 {
+	text-align: center;
+}
+.admin tbody .btn:first-child {
+	margin-right: 10px;
+}
+.admin #add .container-fluid {
+	margin-top: 20px;
+}
