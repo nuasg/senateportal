@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="LDAP Auth Example">
+	<title>LDAP Auth Example | Login</title>
+	<link rel="stylesheet" type="text/css" href="app/css/bootswatch.css">
+	<link rel="stylesheet" type="text/css" href="app/css/style.css">
+</head>
+<body>
+	<h1>Login</h1>
+	<%if (messages) { %>
+		<b><%= messages %></b>
+	<% } %>
+	<form action="/login" method="post">
+		Username: <input type="text" name="username"></br>
+		Password: <input type="password" name="password"></br>
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>

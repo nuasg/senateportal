@@ -32,4 +32,17 @@ module.exports.updateUser = function (req, res) {
 	});
 }
 
-
+module.exports.findUser = function (req, res) {
+	if (!req.body.callback) {
+		var callback = (err, user) => {
+			if (err) {
+				res.sendStatus(err);
+			} else {
+				res.json(user);
+			}
+		}
+	} else {
+		var callback = req.body.callback;
+	}
+	User.findOne({netid: req.body.netid}, callback);
+}
