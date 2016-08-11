@@ -31,8 +31,17 @@
 						"": {
 							templateUrl: "app/admin/admin.html"
 						},
+						"docHub@admin": {
+							templateUrl: "app/admin/dochub.html",
+							controller: "AdminDochubController"
+						},
 						"agendas@admin": {
-							templateUrl: "app/admin/agendas.html"
+							templateUrl: "app/admin/agendas.html",
+							controller: "AdminAgendasController"
+						},
+						"manage@admin": {
+							templateUrl: "app/admin/manage.html",
+							controller: "AdminManageController"
 						}
 					}
 				});

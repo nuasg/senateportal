@@ -8,5 +8,10 @@
 				$state.go("admin");
 			}
 		}
+		$scope.logout = function () {
+			$http.post("/logout").success(function(){
+				window.location.reload(true);
+			});
+		}
 	}]);
 }());

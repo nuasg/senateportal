@@ -7,31 +7,56 @@ html, body {
 .home {
 	padding-top: 100px;
 }
+.login {
+	background: rgba(177, 156, 217, 0.53);
+}
+.login .alert {
+	margin-top: 10px;
+}
+#loginForm {
+	background: white;
+	padding: 30px;
+	margin-top: 40%;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12)
+}
+#loginForm.error {
+	margin-top: calc(40% - 84px);
+}
+#logout {
+	float: right;
+}
+#logout:hover {
+	cursor: pointer;
+}
 /* Senate */
 .senate {
 	padding-top: 60px;
 }
-.senate .agendas {
-	height: 95%;
-}
 .senate #dashboard h2{
 	text-align: center;
 }
-.senate .agendas .modal	a {
+/* Agendas */
+.agendas {
+	height: 95%;
+}
+.agendas .timePeriod {
+	margin-top: 20px;
+}
+.agendas .modal	a {
 	float: left;
 	color: white;
 }
-.senate .agendas iframe {
+.agendas iframe {
 	width: 100%;
 	height: calc(99% - 21px);
 }
-.senate .agendalist {
+.agendalist {
 	margin-top: 20px;
 }
-.senate .agendas .list-group > a {
+.agendas .list-group > a {
 	cursor: pointer;
 }
-.senate .agendas .modal button {
+.agendas .modal button {
 	opacity: 1;
 	color: white;
 	padding-right: 10px;
@@ -56,4 +81,7 @@ html, body {
 }
 .admin #add .container-fluid {
 	margin-top: 20px;
+}
+.admin .admindochub, .admin .manage {
+	padding: 5px 0;
 }

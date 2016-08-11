@@ -1,4 +1,5 @@
 <div class="container home">
+  <a id="logout" ng-click="logout()">Logout</a>
   <div class="login-panel col-md-4 col-md-offset-4">
     <h2>ASG Portal</h2>
     <form>
@@ -9,10 +10,7 @@
           <option>Senator</option>
         </select>
       </div>
-      <button type="submit" ng-click="submit()" class="btn btn-default full-width">Login</button>
+      <button type="submit" ng-click="submit()" class="btn btn-default full-width">Enter</button>
     </form>
   </div>
 </div>
-<form action="/logout" method="post">
-  <input type="submit" name="Submit">
-</form>

@@ -1,0 +1,101 @@
+<div class="manage">
+	<button class="col-md-6 col-md-offset-3 btn btn-default" data-toggle="modal" data-target="#newUser" >Add</button>
+	<table class="table table-striped table-hover ">
+		<thead>
+			<tr>
+				<th>Netid</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Role</th>
+				<th>Group</th>
+				<th>Manage</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat= "row in users| orderBy: 'weekOf': true">
+				<td>{{row.netid}}</td>
+				<td>{{row.firstName}}</td>
+				<td>{{row.lastName}}</td>
+				<td>{{row.email}}</td>
+				<td>{{row.role}}</td>
+				<td>{{row.group}}</td>
+				<td>
+					<div class="btn btn-warning" 
+					data-toggle="modal" 
+					data-target="#newUser" 
+					ng-click="editFocus(row)"
+					>Edit</div>
+					<div class="btn btn-danger" 
+					ng-click="deleteFocus(row)"
+					data-toggle="modal" 
+					data-target="#deleteUser" 
+					>Delete</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="modal fade" id="newUser">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Add</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<div class="form-group">
+						<div class="row">
+							<label class="col-md-3 control-label">Netid</label>
+							<div class="col-md-9">
+								<input ng-model="form.netid" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<label class="col-md-3 control-label">Role</label>
+							<div class="col-md-9">
+								<select ng-options="o.v as o.n for o in [{ n: 'Senator', v: 'Senator' }, { n: 'Admin', v: 'Admin' }]" ng-model="form.role" class="form-control"></select>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<label class="col-md-3 control-label">Group</label>
+							<div class="col-md-9">
+								<input ng-model="form.group" class="form-control">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearRow()">Close</button> 
+				<button type="button" class="btn btn-primary" ng-click= "saveRow(form)" ng-if="!edit">Save</button>
+				<button type="button" class="btn btn-warning" ng-click= "saveEdit(form)" ng-if="edit">Edit</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="deleteUser">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					Confirming deletion "{{deletion.netid}}"
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+				<button type="button" class="btn btn-danger" ng-click="confirmDelete(deletion)">Delete</button>
+			</div>
+		</div>
+	</div>
+</div>

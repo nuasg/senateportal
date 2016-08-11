@@ -2,20 +2,52 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="description" content="LDAP Auth Example">
-	<title>LDAP Auth Example | Login</title>
+	<meta name="description" content="ASG Senate">
+	<title>ASG Senate</title>
 	<link rel="stylesheet" type="text/css" href="app/css/bootswatch.css">
 	<link rel="stylesheet" type="text/css" href="app/css/style.css">
+	<meta name="author" content="Michael Wang">
 </head>
-<body>
-	<h1>Login</h1>
-	<%if (messages) { %>
-		<b><%= messages %></b>
-	<% } %>
-	<form action="/login" method="post">
-		Username: <input type="text" name="username"></br>
-		Password: <input type="password" name="password"></br>
-		<input type="submit" value="Submit">
-	</form>
+<body class="login">
+	<div class="container">
+		<%if (messages) { %>
+			<div class="alert alert-danger messages" role="alert" val="<%=JSON.stringify(messages)%>">
+				<%= messages %>
+			</div>
+		<% } %>
+		<div class="col-md-offset-3 col-md-6">
+			<form action="/login" method="post" class="form-horizontal" id="loginForm">
+				<fieldset>
+					<legend>Login</legend>
+					<div class="form-group">
+						<label for="username" class="col-lg-2 control-label">Netid</label>
+						<div class="col-lg-10">
+							<input type="text" class="form-control" id="username" name="username" placeholder="Netid">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword" class="col-lg-2 control-label">Password</label>
+						<div class="col-lg-10">
+							<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-10 col-lg-offset-2">
+							<button type="submit" class="btn btn-default">Submit</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+<script src="node_modules/jquery.min.js"></script>
+<script type="text/javascript">
+	if (!JSON.parse($(".messages").attr("val")).length) {
+		$(".messages").hide();
+	} else {
+		$("#loginForm").addClass("error");
+	}
+</script>
 </body>
 </html>
+

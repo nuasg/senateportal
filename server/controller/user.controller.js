@@ -22,14 +22,24 @@ module.exports.getUsers = function (req, res) {
 }
 
 module.exports.updateUser = function (req, res) {
-	User.findOneAndUpdate({ '_id': req.body._id }, req.body,
-		function (err, events ) {
+	var request = {};
+	if (req.body._id) {
+		request._id = req.body._id;
+	} else {
+		request.netid = req.body.netid;
+	}
+	if (!req.body.callback) {
+		var callback = (err, events) => {
 			if (err) {
 				res.sendStatus(err);
 			} else {
 				res.sendStatus(200);
 			}
-	});
+		};
+	} else {
+		var callback = req.body.callback;
+	}
+	User.findOneAndUpdate(request, req.body, callback);
 }
 
 module.exports.findUser = function (req, res) {
@@ -45,4 +55,16 @@ module.exports.findUser = function (req, res) {
 		var callback = req.body.callback;
 	}
 	User.findOne({netid: req.body.netid}, callback);
+}
+
+module.exports.deleteUser = function (req, res) {
+	User.remove({
+		_id: req.body._id
+	}, function(err, event) {
+		if (err) {
+			res.sendStatus(err);	
+		} else {
+			res.sendStatus(200);
+		}
+	});
 }

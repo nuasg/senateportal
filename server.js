@@ -10,7 +10,7 @@ var morgan = require('morgan');
 
 var app = express();
 var userController = require("./server/controller/user.controller");
-var businessController = require("./server/controller/business.controller");
+var documentController = require("./server/controller/document.controller");
 
 mongoose.connect("mongodb://senator:senator@ds015995.mlab.com:15995/senator");
 
@@ -49,17 +49,19 @@ app.get('/workaround', function(req,res){
 });
 
 // Backend API Routes
-app.get("/api/business/:id", businessController.getBusinessId);
-app.get("/api/business/date/:date", businessController.getBusinessByWeek);
-app.post("/api/business", businessController.addbusiness);
-app.get("/api/business", businessController.findAllBusiness);
-app.delete("/api/business", businessController.deleteBusiness);
-app.put("/api/business", businessController.updateBusiness);
+app.get("/api/document/:id", documentController.getDocumentId);
+app.get("/api/document/date/:date", documentController.getDocumentByWeek);
+app.post("/api/document", documentController.addDocument);
+app.get("/api/document", documentController.findAllDocuments);
+app.delete("/api/document", documentController.deleteDocument);
+app.put("/api/document", documentController.updateDocument);
+// app.get("/api/:start/:end", documentController.findAllYears);
 // Users
 // app.get("/api/user", userController.authenticate, userController.getAllUsers);
 app.post("/api/user", userController.addUser);
 app.get("/api/user", userController.getUsers);
 app.put("/api/user", userController.updateUser);
+app.delete("/api/user", userController.deleteUser);
 
 app.listen('3000', function(){
 	console.log("Listening on port 3000...");
