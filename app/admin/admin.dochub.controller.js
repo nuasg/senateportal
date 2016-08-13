@@ -2,23 +2,22 @@
 	angular.module("senator")
 	.controller("AdminDochubController",["$scope", "$state", "$http", function($scope, $state, $http){
 		'use strict';
-		var getData = function () {
-			$http.get("/api/document").success(
-				function(data) {
-					$scope.data = data.map(function(obj){
-					obj.weekOf = new Date(obj.weekOf);
-					return obj;
-				});
+		$http.get("/api/document").success(
+		function(data) {
+			$scope.data = data.map(function(obj){
+				obj.weekOf = new Date(obj.weekOf);
+				return obj;
 			});
-		}
-		getData();
+		});
 		$scope.saveRow = function(row) {
 			$http.post("/api/document", row).success(
 				function(data) {
 					$scope.form = null;
 					$("#newDocument").modal('hide');
+					$('body').removeClass('modal-open');
+					$('.modal-backdrop').remove();
 					alert("Document Saved");
-					getData();
+					$state.reload('admin');
 				}
 			).error(alert);
 		}
@@ -27,6 +26,8 @@
 		}
 		$scope.confirmDelete = function (data) {
 			$('#deleteDocument').modal('hide');
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();
 			var req = {
 				_id: data._id
 			};
@@ -35,7 +36,9 @@
 			    url: '/api/document',
 			    data: req,
 			    headers: {'Content-Type': 'application/json;charset=utf-8'}
-			}).success(getData).error(alert);
+			}).success(function(){
+				$state.reload('admin');
+			}).error(alert);
 		}
 		$scope.editFocus = function (row) {
 			$scope.form = JSON.parse(JSON.stringify(row));
@@ -46,7 +49,9 @@
 		$scope.saveEdit = function (data) {
 			var keys = Object.keys(data);
 			var test = true;
-			$('.modal').modal('hide')
+			$('.modal').modal('hide');
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();
 			for (var i=0; i<keys.length; i++) {
 				var value = data[keys[i]];
 				if (value === null || value === "") {
@@ -55,7 +60,7 @@
 			}
 			if (test) {
 				$http.put("/api/document", data).success(function(){
-					getData();
+					$state.reload('admin');
 					$scope.edit = false;
 				}).error(alert);
 			} else {

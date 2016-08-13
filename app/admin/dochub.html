@@ -13,7 +13,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat= "row in data| orderBy: 'weekOf': true| orderBy: 'ordering'">
+			<tr ng-repeat= "row in data| orderBy: ['weekOf','ordering'] : [true,false]">
 				<td>{{row.weekOf | date: 'shortDate'}}</td>
 				<td>{{row.title}}</td>
 				<td><a href="{{row.link}}" target="_blank">{{row.link}}</a></td>

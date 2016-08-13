@@ -79,42 +79,42 @@ module.exports.updateDocument = function (req, res) {
 	});
 }
 
-// module.exports.findAllYears = function(req, res) {
-// 	var start = req.params.start;
-// 	var end = req.params.end;
-// 	var o = {};
-// 	o.map = function () { 
-// 		emit(this);
-// 	};
-// 	o.reduce = function (key, values) {
-// 		debugger;
-// 	};
-// 	o.query = {
-// 		'weekOf':
-// 			{
-// 				$gte: start,
-// 				$lte: end
-// 			}
-// 	};
-// 	Document.mapReduce(o, function (err, results) {
-// 		debugger;
-// 	});
-
-// 	// function () {
-// 	// 	emit(this);
-// 	// },
-// 	// function (key, values) {
-// 	// 	return Array.sum(values)
-// 	// },
-// 	// {
-// 	// 	query: {
-// 	// 		'weekOf': 
-// 	// 			{
-// 	// 				$gte: start,
-// 	// 				$lte: end
-// 	// 			}
-// 	// 	},
-// 	// 	out: "groupedByMonth"
-// 	// }
-// }
+module.exports.getdocumentByDateRange = function(req, res) {
+	var start = new Date(req.params.start);
+	var end = new Date(req.params.end);
+	Document.aggregate([
+		{
+			$match: {
+				'weekOf': 
+					{
+						$gte: start,
+						$lte: end
+					}
+			}
+		},
+		{
+			$project: {
+				title: 1,
+				link: 1,
+				description: 1,
+				type: 1,
+				ordering: 1,
+				weekOf: 1,
+				month: { $month: "$weekOf" },
+				day: { $dayOfMonth: "$weekOf" },
+				year: { $year: "$weekOf"}
+			}
+		}
+	]).then(function (data) {
+		data.map(function(obj){
+			obj.year = moment(obj.weekOf).startOf('year');
+			obj.month = moment(obj.weekOf).startOf('month');
+			obj.day = moment(obj.weekOf).startOf('day');
+			return obj;
+		});
+		res.json(data);
+	}, function (err) {
+		res.send(err);
+	});
+}
 

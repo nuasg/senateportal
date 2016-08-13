@@ -34,6 +34,7 @@ app.use('/node_modules/jquery.min.js',express.static(path.join(__dirname, "/node
 app.use('/node_modules/bootstrap.js',express.static(path.join(__dirname, "/node_modules/bootstrap/dist/js/bootstrap.js")));
 app.use('/node_modules/angular.js',express.static(path.join(__dirname, "/node_modules/angular/angular.js")));
 app.use('/node_modules/angular-ui-router.js',express.static(path.join(__dirname, "/node_modules/angular-ui-router/release/angular-ui-router.js")));
+app.use('/node_modules/angular-filter.js',express.static(path.join(__dirname, "node_modules/angular-filter/dist/angular-filter.js")));
 
 app.use(session({secret: process.env.SECRET}));
 app.use(passport.initialize());
@@ -55,7 +56,7 @@ app.post("/api/document", documentController.addDocument);
 app.get("/api/document", documentController.findAllDocuments);
 app.delete("/api/document", documentController.deleteDocument);
 app.put("/api/document", documentController.updateDocument);
-// app.get("/api/:start/:end", documentController.findAllYears);
+app.get("/api/document/:start/:end", documentController.getdocumentByDateRange);
 // Users
 // app.get("/api/user", userController.authenticate, userController.getAllUsers);
 app.post("/api/user", userController.addUser);

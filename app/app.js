@@ -1,5 +1,5 @@
 (function(){
-	angular.module("senator",["ui.router"])
+	angular.module("senator",["ui.router","angular.filter"])
 		.config(function($stateProvider, $urlRouterProvider){
 			$urlRouterProvider.otherwise("/");
 			$stateProvider
