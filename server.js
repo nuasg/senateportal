@@ -11,7 +11,8 @@ var morgan = require('morgan');
 var app = express();
 var userController = require("./server/controller/user.controller");
 var documentController = require("./server/controller/document.controller");
-
+var termController = require("./server/controller/term.controller");
+// Databases
 mongoose.connect("mongodb://senator:senator@ds015995.mlab.com:15995/senator");
 
 app.use(bodyParser.json());
@@ -63,6 +64,8 @@ app.post("/api/user", userController.addUser);
 app.get("/api/user", userController.getUsers);
 app.put("/api/user", userController.updateUser);
 app.delete("/api/user", userController.deleteUser);
+// Terms
+app.get("/api/terms", termController.getTerms);
 
 app.listen('3000', function(){
 	console.log("Listening on port 3000...");

@@ -1,17 +1,16 @@
 <div class="row">
 	<div class="col-md-9">
-		<h2>Spring 2015</h2>
+		<h2>{{dates.selected.name}}</h2>
 	</div>
 	<div class="col-md-3 form-inline timePeriod">
-		<input class="form-control">
-		<select class="form-control">
-			<option value="Fall">Fall</option>
-			<option value="Winter">Winter</option>
-			<option value="Spring">Spring</option>
-		</select>
+		<select class="form-control"
+	      ng-options="option.name for option in dates.data track by option._id"
+	      ng-model="dates.selected"
+	      ng-change="getDocs(dates.selected.start_date, dates.selected.end_date)">
+      </select>
 	</div>
 </div>
-<div class="row" ng-repeat="(key,value) in items | orderBy:'weekOf' | groupBy:'stringMonth'">
+<div class="row" ng-repeat="(key,value) in items | orderBy:'weekOf':true | groupBy:'stringMonth'">
 	<div class="col-md-2">
 		<h3>{{key}}</h3>
 	</div>
