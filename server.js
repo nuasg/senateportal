@@ -65,7 +65,7 @@ app.get("/api/user", userController.getUsers);
 app.put("/api/user", userController.updateUser);
 app.delete("/api/user", userController.deleteUser);
 // Terms
-app.get("/api/terms", termController.getTerms);
+app.get("/api/terms/:date", termController.getTerms);
 
 app.listen('3000', function(){
 	console.log("Listening on port 3000...");

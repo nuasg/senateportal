@@ -2,8 +2,8 @@
 	angular.module("senator")
 	.controller("AdminAgendasController",["$scope", "$state", "$http", "$sce", function($scope, $state, $http, $sce){
 		'use strict';
-		$http.get("api/terms").success(function(data){
-			var initial = new Date();
+		var initial = new Date();
+		$http.get("api/terms/" + initial).success(function(data){
 			var selected = null;
 			data.forEach(function(obj){
 				obj.end_date = new Date(obj.end_date);
@@ -11,7 +11,7 @@
 				if (obj.start_date <= initial && obj.end_date >= initial) {
 					selected = obj;
 				}
-			})
+			});
 			$scope.dates = {
 				data,
 				selected

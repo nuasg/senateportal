@@ -21,6 +21,7 @@
     "express-session": "^1.14.0",
     "gulp": "^3.9.1",
     "jquery": "^2.2.0",
+    "lodash": "^4.15.0",
     "moment": "^2.14.1",
     "mongoose": "^4.3.5",
     "morgan": "^1.7.0",

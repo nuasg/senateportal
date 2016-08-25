@@ -3,11 +3,12 @@
 		<h2>{{dates.selected.name}}</h2>
 	</div>
 	<div class="col-md-3 form-inline timePeriod">
+		<label class="control-label">Term:</label>
 		<select class="form-control"
-	      ng-options="option.name for option in dates.data track by option._id"
-	      ng-model="dates.selected"
-	      ng-change="getDocs(dates.selected.start_date, dates.selected.end_date)">
-      </select>
+			ng-options="option.name for option in dates.data track by option.name"
+			ng-model="dates.selected"
+			ng-change="getDocs(dates.selected.start_date, dates.selected.end_date)">
+		</select>
 	</div>
 </div>
 <div class="row" ng-repeat="(key,value) in items | orderBy:'weekOf':true | groupBy:'stringMonth'">

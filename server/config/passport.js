@@ -29,6 +29,7 @@ module.exports = function(passport) {
 			body: { 
 				netid: user.nuIdTag,
 				callback: (err, response) => {
+					debugger;
 					if ((!err && !response)|| err) {
 						return done(null, false, { messages: 'Netid not found in Database' });
 					} else {
