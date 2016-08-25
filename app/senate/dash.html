@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="panel-group col-md-12 agendalist">
+		<div class="panel panel-default" ng-repeat="doc in data | orderBy: 'ordering'">
+			<div class="panel-heading">{{doc.title}}</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-1">
+						<div class="right">
+							<b>Type</b>:
+						</div>
+					</div>
+					<div class="col-md-11">
+						{{doc.type}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-1">
+						<div class="right">
+							<b>Description</b>:
+						</div>
+					</div>
+					<div class="col-md-11">
+						{{doc.description}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-1">
+						<div class="right">
+							<b>Link</b>:
+						</div>
+					</div>
+					<div class="col-md-11">
+						<a href="{{doc.link}}">{{doc.link}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

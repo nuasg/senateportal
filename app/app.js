@@ -14,11 +14,13 @@
 						"": {
 							templateUrl: "app/senate/senate.html"		
 						},
-						"agendas@senate": {
-							templateUrl: "app/senate/agendas.html"
+						"dash@senate": {
+							templateUrl: "app/senate/dash.html",
+							controller: "SenateDashController"
 						},
 						"docs@senate": {
-							templateUrl: "app/senate/docs.html"
+							templateUrl: "app/senate/docs.html",
+							controller: "SenateDocsController"
 						},
 						"polls@senate": {
 							templateUrl: "app/senate/polls.html"
