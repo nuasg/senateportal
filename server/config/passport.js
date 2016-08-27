@@ -28,38 +28,36 @@ module.exports = function(passport) {
 		var netid = { 
 			body: { 
 				netid: user.nuIdTag,
-				callback: (err, response) => {
-					debugger;
-					if ((!err && !response)|| err) {
-						return done(null, false, { messages: 'Netid not found in Database' });
-					} else {
-						const request = {};
-						const mongoUser = response['_doc'];
-						let test = true;
-						request.netid = mongoUser.netid;
-						if (!mongoUser.email) {
-							request.email = user.mail;
-							test = false;
-						}
-						if (!mongoUser.firstName) {
-							request.firstName = user.givenName;
-							test = false;
-						}
-						if (!mongoUser.lastName) {
-							request.lastName = user.sn;
-							test = false;
-						}
-						if (!test) {
-							userController.updateUser({
-								body: request,
-								callback: (err, final) => {
-									return done(null, user);
-								}
-							});	
-						} else {
-							return done(null, user);
-						}
+				success: (response) => {
+					const request = {};
+					const mongoUser = response['_doc'];
+					let test = true;
+					request.netid = mongoUser.netid;
+					if (!mongoUser.email) {
+						request.email = user.mail;
+						test = false;
 					}
+					if (!mongoUser.firstName) {
+						request.firstName = user.givenName;
+						test = false;
+					}
+					if (!mongoUser.lastName) {
+						request.lastName = user.sn;
+						test = false;
+					}
+					if (!test) {
+						userController.updateUser({
+							body: request,
+							callback: () => {
+								return done(null, user);
+							}
+						});	
+					} else {
+						return done(null, user);
+					}
+				},
+				failure: (err) => {
+					return done(null, false, { messages: 'Netid not found in Database' });
 				}
 			} 
 		};

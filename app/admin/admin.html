@@ -1,9 +1,9 @@
 <div class="admin">
-	<h1>Admin Dashboard</h1>
 	<div class="container">
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="admin#all" data-toggle="tab">Document Hub</a></li>
 			<li><a href="admin#current" data-toggle="tab">Agendas</a></li>
+			<li><a href="admin#configure" data-toggle="tab">Configure</a></li>
 			<li><a href="admin#attendence" data-toggle="tab">Attendence</a></li>
 			<li><a href="admin#manage" data-toggle="tab">Manage Roster</a></li>
 		</ul>
@@ -14,10 +14,12 @@
 			<div class="tab-pane fade" id="current">
 				<div ui-view="agendas" class="agendas"></div> 
 			</div>
+			<div class="tab-pane fade" id="configure">
+				<div ui-view="configure" class="configure"></div> 
+			</div>
+			<div class="tab-pane fade" id="attendence"></div>
 			<div class="tab-pane fade" id="manage">
 				<div ui-view="manage"></div>
-			</div>
-			<div class="tab-pane fade" id="attendence">
 			</div>
 		</div>
 	</div>

@@ -5,33 +5,39 @@ var moment = require("moment");
 module.exports.addDocument = function (req, res) {
 	req.body.weekOf = moment(req.body.weekOf).startOf('week').add(3, 'days').add(19, 'hours').toJSON();
 	req.body.order = parseInt(req.body.order, 10);
-	Document.create(req.body, function(err, event) {
-		if (err) {
-			res.sendStatus(err);
-		} else {
+	doc = new Document(req.body)
+	doc.
+		save().
+		then(function(err, event) {
 			res.sendStatus(200);
-		}
-	});
+		}).
+		catch(function(err) {
+			res.sendStatus(err);
+		});
 }
 // Get All
 module.exports.findAllDocuments = function (req, res) {
-	Document.find(function(err, doc) {
-		if (err) {
-			res.sendStatus(err);
-		} else {
+	Document.
+		find({}).
+		exec().
+		then(function(doc) {
 			res.json(doc);
-		}
-	});
+		}).
+		catch(function(err) {
+			res.sendStatus(err);
+		});
 }
 // Get by Id
 module.exports.getDocumentId = function (req, res) {
-	Document.findById(req.params.id,
-		function (err, doc){
-			if (err)
-				res.send(err);
+	Document.
+		findById(req.params.id).
+		exec().
+		then(function (doc){
 			res.json(doc);
-		}
-	);
+		}).
+		catch(function(err) {
+			res.sendStatus(err);
+		});
 }
 // Get by Week
 module.exports.getDocumentByWeek = function (req, res) {
@@ -45,76 +51,84 @@ module.exports.getDocumentByWeek = function (req, res) {
 					$gte: start,
 					$lte: end
 				}
-		},
-		function (err, doc){
-			if (err)
-				res.send(err);
+		}).
+		exec().
+		then(function (doc) {
 			res.json(doc);
-		}
-	);
+		}).
+		catch(function (err){	
+			res.send(err);	
+		});
 }
 // Delete document
 module.exports.deleteDocument = function (req, res) {
-	Document.remove({
-		_id: req.body._id
-	}, function(err, event) {
-		if (err) {
-			res.sendStatus(err);	
-		} else {
+	Document.
+		remove({
+			_id: req.body._id
+		}).
+		exec().
+		then(function (event) {
 			res.sendStatus(200);
-		}
-	});
+		}).
+		catch(function (err) {
+			res.send(err);
+		});
 }
 // Update document
 module.exports.updateDocument = function (req, res) {
 	req.body.weekOf = moment(req.body.weekOf).startOf('week').add(3, 'days').add(19, 'hours').toJSON();
 	req.body.order = parseInt(req.body.order, 10);
-	Document.findOneAndUpdate({ '_id': req.body._id }, req.body,
-		function (err, events ) {
-			if (err) {
-				res.sendStatus(err);
-			} else {
-				res.sendStatus(200);
-			}
-	});
+	Document.
+		findOneAndUpdate({ '_id': req.body._id }, req.body).
+		exec().
+		then(function () {
+			res.sendStatus(200);
+		}).
+		catch(function (err) {
+			res.send(err);
+		});
 }
 
 module.exports.getdocumentByDateRange = function(req, res) {
 	var start = new Date(req.params.start);
 	var end = new Date(req.params.end);
-	Document.aggregate([
-		{
-			$match: {
-				'weekOf': 
-					{
-						$gte: start,
-						$lte: end
-					}
+	Document.
+		aggregate([
+			{
+				$match: {
+					'weekOf': 
+						{
+							$gte: start,
+							$lte: end
+						}
+				}
+			},
+			{
+				$project: {
+					title: 1,
+					link: 1,
+					description: 1,
+					type: 1,
+					ordering: 1,
+					weekOf: 1,
+					month: { $month: "$weekOf" },
+					day: { $dayOfMonth: "$weekOf" },
+					year: { $year: "$weekOf"}
+				}
 			}
-		},
-		{
-			$project: {
-				title: 1,
-				link: 1,
-				description: 1,
-				type: 1,
-				ordering: 1,
-				weekOf: 1,
-				month: { $month: "$weekOf" },
-				day: { $dayOfMonth: "$weekOf" },
-				year: { $year: "$weekOf"}
-			}
-		}
-	]).then(function (data) {
-		data.map(function(obj){
-			obj.year = moment(obj.weekOf).startOf('year');
-			obj.month = moment(obj.weekOf).startOf('month');
-			obj.day = moment(obj.weekOf).startOf('day');
-			return obj;
+		]).
+		exec().
+		then(function (data) {
+			data.map(function(obj){
+				obj.year = moment(obj.weekOf).startOf('year');
+				obj.month = moment(obj.weekOf).startOf('month');
+				obj.day = moment(obj.weekOf).startOf('day');
+				return obj;
+			});
+			res.json(data);
+		}).
+		catch(function (err) {
+			res.send(err);
 		});
-		res.json(data);
-	}, function (err) {
-		res.send(err);
-	});
 }
 

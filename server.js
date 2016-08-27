@@ -13,7 +13,13 @@ var userController = require("./server/controller/user.controller");
 var documentController = require("./server/controller/document.controller");
 var termController = require("./server/controller/term.controller");
 // Databases
-mongoose.connect("mongodb://senator:senator@ds015995.mlab.com:15995/senator");
+var promise = require('bluebird');
+mongoose.Promise = promise;
+
+var dbURI = process.env.SENATOR_DB;
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },  
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }}; 
+mongoose.connect(dbURI, options);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -26,7 +32,7 @@ app.set('views', path.join(__dirname, '/app'));
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('dev'));
-app.use(cookieParser(process.env.SECRET));
+app.use(cookieParser(process.env.SENATOR_SECRET));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended': 'false'}));
 
@@ -37,7 +43,12 @@ app.use('/node_modules/angular.js',express.static(path.join(__dirname, "/node_mo
 app.use('/node_modules/angular-ui-router.js',express.static(path.join(__dirname, "/node_modules/angular-ui-router/release/angular-ui-router.js")));
 app.use('/node_modules/angular-filter.js',express.static(path.join(__dirname, "node_modules/angular-filter/dist/angular-filter.js")));
 
-app.use(session({secret: process.env.SECRET}));
+app.use(session({
+    secret: process.env.SENATOR_SECRET,
+    name: 'asg-senate',
+    resave: false,
+    saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -47,7 +58,7 @@ require('./server/config/passport')(passport);
 require('./routes.js')(app, passport);
 
 app.get('/workaround', function(req,res){
-	res.sendFile(path.join(__dirname,"app/index.html"));
+    res.sendFile(path.join(__dirname,"app/index.html"));
 });
 
 // Backend API Routes
@@ -67,6 +78,4 @@ app.delete("/api/user", userController.deleteUser);
 // Terms
 app.get("/api/terms/:date", termController.getTerms);
 
-app.listen('3000', function(){
-	console.log("Listening on port 3000...");
-});
+app.listen("5004");

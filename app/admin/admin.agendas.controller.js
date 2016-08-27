@@ -16,7 +16,9 @@
 				data,
 				selected
 			}
-			$scope.getDocs(selected.start_date,selected.end_date);
+			if (selected) {
+				$scope.getDocs(selected.start_date,selected.end_date);	
+			}
 		});
 		$scope.getDocs = function(start, end){
 			var query = "api/document/" + start + "/" + end;

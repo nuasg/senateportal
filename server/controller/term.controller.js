@@ -5,10 +5,10 @@ var _ = require('lodash');
 
 module.exports.getTerms = function (req, res) {
 	const date = new Date(req.params.date);
-	Term.find(function(err, terms) {
-		if (err) {
-			res.sendStatus(err);
-		} else {
+	Term.
+		find({}).
+		exec().
+		then(function(terms) {
 			const term_values = _.map(terms, '_doc');
 			if (isNewDate(term_values, date)){
 				queryAPI((err, response, body) => {
@@ -23,8 +23,10 @@ module.exports.getTerms = function (req, res) {
 			} else {
 				res.json(_.orderBy(terms, 'start_date', 'desc'));
 			}
-		}
-	});
+		}).
+		catch(function (err) {
+			res.sendStatus(err);
+		});
 }
 
 const isNewDate = (terms, newDate) => {

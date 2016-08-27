@@ -44,6 +44,9 @@
 						"manage@admin": {
 							templateUrl: "app/admin/manage.html",
 							controller: "AdminManageController"
+						},
+						"configure@admin": {
+							templateUrl: "app/admin/configure.html"
 						}
 					}
 				});
