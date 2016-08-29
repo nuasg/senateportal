@@ -68,6 +68,23 @@ const checkCookie = (req, res, next) => {
 	}
 }
 
+const adminAccess = (req, res, next) => {
+	userController.findUser({
+		body: {
+			netid: req.session.passport.user.uid,
+			success: (user) => {
+				if (user.role === "Admin") {
+					next();	
+				} else {
+					res.sendStatus(500);
+				}
+			},
+			failure: () => {
+				res.sendStatus(500);
+			}
+		}
+	});
+}
 // routing
 require('./routes.js')(app, passport);
 
@@ -78,17 +95,17 @@ app.get('/workaround', function(req,res){
 // Backend API Routes
 app.get("/api/document/:id", checkCookie, documentController.getDocumentId);
 app.get("/api/document/date/:date", checkCookie, documentController.getDocumentByWeek);
-app.post("/api/document", documentController.addDocument);
+app.post("/api/document", checkCookie, adminAccess, documentController.addDocument);
 app.get("/api/document", checkCookie, documentController.findAllDocuments);
-app.delete("/api/document", documentController.deleteDocument);
-app.put("/api/document", documentController.updateDocument);
+app.delete("/api/document", checkCookie, adminAccess, documentController.deleteDocument);
+app.put("/api/document", checkCookie, adminAccess, documentController.updateDocument);
 app.get("/api/document/:start/:end", checkCookie, documentController.getdocumentByDateRange);
 // Users
 // app.get("/api/user", userController.authenticate, userController.getAllUsers);
-app.post("/api/user", userController.addUser);
+app.post("/api/user", checkCookie, adminAccess, userController.addUser);
 app.get("/api/user", checkCookie, userController.getUsers);
-app.put("/api/user", userController.updateUser);
-app.delete("/api/user", userController.deleteUser);
+app.put("/api/user", checkCookie, adminAccess, userController.updateUser);
+app.delete("/api/user",checkCookie, adminAccess, userController.deleteUser);
 // Terms
 app.get("/api/terms/:date", checkCookie, termController.getTerms);
 
