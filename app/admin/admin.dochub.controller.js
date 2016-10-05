@@ -71,6 +71,13 @@
 			$scope.edit = false;
 			$scope.form	= null;
 		}
+		$scope.getConfigValues = function () {
+			$http.get("/api/docType").success(function(data){
+                $scope.types = data.map(function(obj){
+                	return obj.type;
+                });
+            });
+		}
 	}]);
 	angular.module("senator")
 		.filter( 'domain', function () {

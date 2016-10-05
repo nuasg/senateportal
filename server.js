@@ -11,8 +11,10 @@ const morgan = require('morgan');
 
 const app = express();
 const userController = require("./server/controller/user.controller");
+const docTypeController = require('./server/controller/docType.controller');
 const documentController = require("./server/controller/document.controller");
 const termController = require("./server/controller/term.controller");
+const legislationController = require("./server/controller/legislation.controller");
 // Databases
 const promise = require('bluebird');
 mongoose.Promise = promise;
@@ -61,29 +63,37 @@ require('./server/config/passport')(passport);
 
 // Middleware
 const checkCookie = (req, res, next) => {
-	if (req.session.passport) {
+	if (process.env.SENATOR_DEV) {
 		next();
 	} else {
-		res.sendStatus(500);
+		if (req.session.passport) {
+			next();
+		} else {
+			res.sendStatus(500);
+		}
 	}
 }
 
 const adminAccess = (req, res, next) => {
-	userController.findUser({
-		body: {
-			netid: req.session.passport.user.uid,
-			success: (user) => {
-				if (user.role === "Admin") {
-					next();	
-				} else {
+	if (process.env.SENATOR_DEV) {
+		next();
+	} else {
+		userController.findUser({
+			body: {
+				netid: req.session.passport.user.uid,
+				success: (user) => {
+					if (user.role === "Admin") {
+						next();	
+					} else {
+						res.sendStatus(500);
+					}
+				},
+				failure: () => {
 					res.sendStatus(500);
 				}
-			},
-			failure: () => {
-				res.sendStatus(500);
 			}
-		}
-	});
+		});
+	}
 }
 // routing
 require('./routes.js')(app, passport);
@@ -108,5 +118,17 @@ app.put("/api/user", checkCookie, adminAccess, userController.updateUser);
 app.delete("/api/user",checkCookie, adminAccess, userController.deleteUser);
 // Terms
 app.get("/api/terms/:date", checkCookie, termController.getTerms);
+// DocTypes
+app.post("/api/docType", checkCookie, adminAccess, docTypeController.addDocType);
+app.get("/api/docType", checkCookie, docTypeController.getDocTypes);
+app.put("/api/docType", checkCookie, adminAccess, docTypeController.updateDocType);
+app.delete("/api/docType",checkCookie, adminAccess, docTypeController.deleteDocType);
+// Legislation
+app.post("/api/legislation", checkCookie, legislationController.addLegislation);
+app.get("/api/legislation", checkCookie, legislationController.getLegislations);
+app.get("/api/legislation/bydoc/:documentId", checkCookie, legislationController.getLegislationByDoc);
+app.get("/api/legislation/:documentId", checkCookie, legislationController.getLegislation);
+app.put("/api/legislation", checkCookie, legislationController.updateLegislation);
+app.delete("/api/legislation",checkCookie, legislationController.deleteLegislation);
 
 app.listen("5004");

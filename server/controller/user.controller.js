@@ -2,6 +2,9 @@ var mongoose = require("mongoose");
 var User = require("../models/user");
 
 module.exports.addUser = function (req, res) {
+	if (req.body.active) {
+		req.body.active = (req.body.active === "true");
+	}
 	var user = new User(req.body);
 	user.
 		save().
@@ -27,6 +30,9 @@ module.exports.getUsers = function (req, res) {
 
 module.exports.updateUser = function (req, res) {
 	var request = {};
+	if (req.body.active) {
+		req.body.active = (req.body.active === "true");
+	}
 	if (req.body._id) {
 		request._id = req.body._id;
 	} else {

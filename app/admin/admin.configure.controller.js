@@ -1,0 +1,39 @@
+(function(){
+	angular.module("senator")
+	.controller("AdminConfigureController",["$scope", "$state", "$http", function($scope, $state, $http){
+		'use strict';
+        var getTypeData = function () {
+    		$http.get("/api/docType").success(function(data){
+                $scope.types = data;
+            });
+        }
+        getTypeData();
+        $scope.addType = function (newType) {
+            $http.post("/api/docType", {"type": newType}).success(function(data){
+                getTypeData();
+                $scope.type_value = "";
+                $("#addType").modal('hide');
+            });
+        }
+        $scope.editFocus = function (value, id) {
+            $scope.type_value = value;
+            $scope.type_id = id;
+        }
+        $scope.editType = function (value, id) {
+            $http.put("/api/docType", {"type": value, "_id": id}).success(function(data){
+                getTypeData();
+                $scope.type_value = null;
+                $scope.type_id = null;
+                $("#editType").modal("hide");
+            })
+        }
+        $scope.deleteType = function (id) {
+            $http({
+                method: 'DELETE',
+                url: '/api/docType',
+                data: {_id: id},
+                headers: {'Content-Type': 'application/json;charset=utf-8'}
+            }).success(getTypeData).error(alert);
+        }
+	}])
+}());

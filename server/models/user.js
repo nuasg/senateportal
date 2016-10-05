@@ -7,7 +7,8 @@ var UserSchema = new Schema({
 	firstName		: String,
 	lastName		: String,
 	group			: String,
-	role 			: String
+	role 			: String,
+    active          : Boolean
 })
 
 module.exports = mongoose.model('User', UserSchema);

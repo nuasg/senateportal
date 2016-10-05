@@ -2,8 +2,9 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var LegislationSchema = new Schema({
-	for			: [],
-	against		: []
+    netid    : String,
+    vote        : String,
+    documentId  : String
 })
 
 module.exports = mongoose.model('Legislation', LegislationSchema);

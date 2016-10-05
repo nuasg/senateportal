@@ -1,8 +1,10 @@
 <div class="admin">
 	<div class="container">
+		<a id="logout" ng-click="logout()">Logout</a>
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="admin#all" data-toggle="tab">Document Hub</a></li>
 			<li><a href="admin#current" data-toggle="tab">Agendas</a></li>
+			<li><a href="admin#results" data-toggle="tab">Results</a></li>
 			<li><a href="admin#configure" data-toggle="tab">Configure</a></li>
 			<li><a href="admin#attendence" data-toggle="tab">Attendence</a></li>
 			<li><a href="admin#manage" data-toggle="tab">Manage Roster</a></li>
@@ -13,6 +15,9 @@
 			</div>
 			<div class="tab-pane fade" id="current">
 				<div ui-view="agendas" class="agendas"></div> 
+			</div>
+			<div class="tab-pane fade" id="results">
+				<div ui-view="results" class="results"></div>
 			</div>
 			<div class="tab-pane fade" id="configure">
 				<div ui-view="configure" class="configure"></div> 

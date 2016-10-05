@@ -88,3 +88,15 @@ html, body {
 .admin .admindochub .search {
 	margin-top: 5px;
 }
+.admin .configure .docTypes * {
+	margin-right: 10px;
+	display: inline-block;
+}
+.admin .configure .list .btn-group {
+	margin-right: 10px;
+	margin-top: 10px;
+	display: inline-block;
+}
+.dropdown-menu {
+	cursor: pointer;
+}

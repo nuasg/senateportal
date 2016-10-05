@@ -7,6 +7,7 @@ var DocumentSchema = new Schema({
 	link			: String,
 	description		: String,
 	type 			: String,
+    live            : Boolean,
 	ordering		: Number
 })
 

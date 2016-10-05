@@ -1,20 +1,26 @@
 var mongoose = require("mongoose");
-var Document = require("../models/document");
 var moment = require("moment");
+var Document = require("../models/document");
+var Legislation = require("../models/legislation");
+
 // Add
 module.exports.addDocument = function (req, res) {
 	req.body.weekOf = moment(req.body.weekOf).startOf('week').add(3, 'days').add(19, 'hours').toJSON();
 	req.body.order = parseInt(req.body.order, 10);
-	doc = new Document(req.body)
+	if (req.body.live) {
+		req.body.live = (req.body.live === "true");
+	}
+	const doc = new Document(req.body)
 	doc.
 		save().
-		then(function(err, event) {
+		then((doc) => {
 			res.sendStatus(200);
 		}).
-		catch(function(err) {
+		catch((err) => {
 			res.sendStatus(err);
 		});
 }
+
 // Get All
 module.exports.findAllDocuments = function (req, res) {
 	Document.
@@ -78,6 +84,9 @@ module.exports.deleteDocument = function (req, res) {
 module.exports.updateDocument = function (req, res) {
 	req.body.weekOf = moment(req.body.weekOf).startOf('week').add(3, 'days').add(19, 'hours').toJSON();
 	req.body.order = parseInt(req.body.order, 10);
+	if (req.body.live) {
+		req.body.live = (req.body.live === "true");
+	}
 	Document.
 		findOneAndUpdate({ '_id': req.body._id }, req.body).
 		exec().

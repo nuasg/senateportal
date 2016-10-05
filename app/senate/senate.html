@@ -1,7 +1,9 @@
 <div class="senate">
 	<div class="container">
+		<a id="logout" ng-click="logout()">Logout</a>
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="senate#dashboard" data-toggle="tab">Dashboard</a></li>
+			<li><a href="senate#results" data-toggle="tab">Results</a></li>
 			<li><a href="senate#docs" data-toggle="tab">Documents</a></li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
@@ -11,6 +13,9 @@
 				<hr>
 				<h2>Current Senate</h2>
 				<div ui-view="dash" class="dash"></div> 
+			</div>
+			<div class="tab-pane fade" id="results">
+				<div ui-view="results" class="results"></div>
 			</div>
 			<div class="tab-pane fade" id="docs">
 				<div ui-view="docs" class="docs"></div>

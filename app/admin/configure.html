@@ -1,1 +1,81 @@
-Legislation
+<div class="docTypes">
+	<h3>Document Types</h3>
+	<button class="btn btn-default" data-toggle="modal" data-target="#addType">Add</button>
+</div>
+<div class="list">
+	<div class="btn-group" ng-repeat="type in types">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span>{{type.type}}</span>
+			<span class="sr-only">Toggle Dropdown</span>
+		</button>
+		<ul class="dropdown-menu">
+			<li>
+				<a  data-toggle="modal" 
+					data-target="#editType" 
+					ng-click="editFocus(type.type, type._id)">
+					Edit
+				</a>
+				<a  
+					ng-click="deleteType(type._id)">
+					Delete
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="modal fade" id="addType">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Add</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<div class="form-group">
+						<div class="row">
+							<label class="col-md-3 control-label">Type</label>
+							<div class="col-md-9">
+								<input ng-model="type_value" class="form-control">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+				<button type="button" class="btn btn-primary" ng-click="addType(type_value)">Add</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="editType">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Edit</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<div class="form-group">
+						<div class="row">
+							<label class="col-md-3 control-label">Type</label>
+							<div class="col-md-9">
+								<input ng-model="type_value" class="form-control">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+				<button type="button" class="btn btn-warning" ng-click="editType(type_value, type_id)">Edit</button>
+			</div>
+		</div>
+	</div>
+</div>
+

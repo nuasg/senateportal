@@ -12,7 +12,8 @@
 					url: "/senate", 
 					views: {
 						"": {
-							templateUrl: "app/senate/senate.html"		
+							templateUrl: "app/senate/senate.html",
+							controller: "HomeController"
 						},
 						"dash@senate": {
 							templateUrl: "app/senate/dash.html",
@@ -23,7 +24,12 @@
 							controller: "SenateDocsController"
 						},
 						"polls@senate": {
-							templateUrl: "app/senate/polls.html"
+							templateUrl: "app/senate/polls.html",
+							controller: "SenateDashController"
+						},
+						"results@senate": {
+							templateUrl: "app/senate/results.html",
+							controller: "SenateDocsController"
 						}
 					}
 				})
@@ -31,7 +37,12 @@
 					url: "/admin",
 					views: {
 						"": {
-							templateUrl: "app/admin/admin.html"
+							templateUrl: "app/admin/admin.html",
+							controller: "HomeController"
+						},
+						"results@admin": {
+							templateUrl: "app/senate/results.html",
+							controller: "SenateDocsController"
 						},
 						"docHub@admin": {
 							templateUrl: "app/admin/dochub.html",
@@ -46,7 +57,8 @@
 							controller: "AdminManageController"
 						},
 						"configure@admin": {
-							templateUrl: "app/admin/configure.html"
+							templateUrl: "app/admin/configure.html",
+							controller: "AdminConfigureController"
 						}
 					}
 				});
