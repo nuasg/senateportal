@@ -38,30 +38,15 @@ module.exports.getLegislations = function (req, res) {
 }
 
 module.exports.getLegislation = function (req, res) {
-    const req = {
+    const request = {
         documentId: req.params.documentId,
         netid: req.user.nuIdTag
     };
     Legislation.
-        find(req).
+        find(request).
         exec().
         then(function(legislation) {
             res.json(legislation);
-        }).
-        catch(function(err) {
-            res.sendStatus(err);
-        });
-}
-
-module.exports.getLegislation = function (req, res) {
-    const req = {
-        documentId: req.params.documentId,
-    };
-    Legislation.
-        find(req).
-        exec().
-        then(function(legislations) {
-            res.json(legislations);
         }).
         catch(function(err) {
             res.sendStatus(err);

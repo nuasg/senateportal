@@ -126,7 +126,6 @@ app.delete("/api/docType",checkCookie, adminAccess, docTypeController.deleteDocT
 // Legislation
 app.post("/api/legislation", checkCookie, legislationController.addLegislation);
 app.get("/api/legislation", checkCookie, legislationController.getLegislations);
-app.get("/api/legislation/bydoc/:documentId", checkCookie, legislationController.getLegislationByDoc);
 app.get("/api/legislation/:documentId", checkCookie, legislationController.getLegislation);
 app.put("/api/legislation", checkCookie, legislationController.updateLegislation);
 app.delete("/api/legislation",checkCookie, legislationController.deleteLegislation);
