@@ -95,6 +95,24 @@ const adminAccess = (req, res, next) => {
 		});
 	}
 }
+
+const senatorAccess = (req, res, next) => {
+    userController.findUser({
+        body: {
+            netid: req.session.passport.user.uid,
+            success: (user) => {
+                if (user.role === "Senator") {
+                    next();
+                } else {
+                    res.sendStatus(500);
+                }
+            },
+            failure: () => {
+                res.sendStatus(500);
+            }
+        }
+    });
+}
 // routing
 require('./routes.js')(app, passport);
 
@@ -102,32 +120,44 @@ app.get('/workaround', function(req,res){
     res.sendFile(path.join(__dirname,"app/index.html"));
 });
 
+// Who Am I
+app.get("//api/whoami", checkCookie, (req, res) => {
+    userController.findUser({
+        body: {
+            netid: req.user.uid,
+            success: (user) => {
+                res.json(user);
+            }
+        }
+    });
+});
+
 // Backend API Routes
-app.get("/api/document/:id", checkCookie, documentController.getDocumentId);
-app.get("/api/document/date/:date", checkCookie, documentController.getDocumentByWeek);
-app.post("/api/document", checkCookie, adminAccess, documentController.addDocument);
-app.get("/api/document", checkCookie, documentController.findAllDocuments);
-app.delete("/api/document", checkCookie, adminAccess, documentController.deleteDocument);
-app.put("/api/document", checkCookie, adminAccess, documentController.updateDocument);
-app.get("/api/document/:start/:end", checkCookie, documentController.getdocumentByDateRange);
+app.get("//api/document/:id", checkCookie, documentController.getDocumentId);
+app.get("//api/document/date/:date", checkCookie, documentController.getDocumentByWeek);
+app.post("//api/document", checkCookie, adminAccess, documentController.addDocument);
+app.get("//api/document", checkCookie, documentController.findAllDocuments);
+app.delete("//api/document", checkCookie, adminAccess, documentController.deleteDocument);
+app.put("//api/document", checkCookie, adminAccess, documentController.updateDocument);
+app.get("//api/document/:start/:end", checkCookie, documentController.getdocumentByDateRange);
 // Users
-// app.get("/api/user", userController.authenticate, userController.getAllUsers);
-app.post("/api/user", checkCookie, adminAccess, userController.addUser);
-app.get("/api/user", checkCookie, userController.getUsers);
-app.put("/api/user", checkCookie, adminAccess, userController.updateUser);
-app.delete("/api/user",checkCookie, adminAccess, userController.deleteUser);
+// app.get("//api/user", userController.authenticate, userController.getAllUsers);
+app.post("//api/user", checkCookie, adminAccess, userController.addUser);
+app.get("//api/user", checkCookie, adminAccess, userController.getUsers);
+app.put("//api/user", checkCookie, adminAccess, userController.updateUser);
+app.delete("//api/user",checkCookie, adminAccess, userController.deleteUser);
 // Terms
-app.get("/api/terms/:date", checkCookie, termController.getTerms);
+app.get("//api/terms/:date", checkCookie, termController.getTerms);
 // DocTypes
-app.post("/api/docType", checkCookie, adminAccess, docTypeController.addDocType);
-app.get("/api/docType", checkCookie, docTypeController.getDocTypes);
-app.put("/api/docType", checkCookie, adminAccess, docTypeController.updateDocType);
-app.delete("/api/docType",checkCookie, adminAccess, docTypeController.deleteDocType);
+app.post("//api/docType", checkCookie, adminAccess, docTypeController.addDocType);
+app.get("//api/docType", checkCookie, docTypeController.getDocTypes);
+app.put("//api/docType", checkCookie, adminAccess, docTypeController.updateDocType);
+app.delete("//api/docType",checkCookie, adminAccess, docTypeController.deleteDocType);
 // Legislation
-app.post("/api/legislation", checkCookie, legislationController.addLegislation);
-app.get("/api/legislation", checkCookie, legislationController.getLegislations);
-app.get("/api/legislation/:documentId", checkCookie, legislationController.getLegislation);
-app.put("/api/legislation", checkCookie, legislationController.updateLegislation);
-app.delete("/api/legislation",checkCookie, legislationController.deleteLegislation);
+app.post("//api/legislation", checkCookie, senatorAccess, legislationController.addLegislation);
+app.get("//api/legislation", checkCookie, legislationController.getLegislations);
+app.get("//api/legislation/:documentId", checkCookie, legislationController.getLegislation);
+app.put("//api/legislation", checkCookie, senatorAccess, legislationController.updateLegislation);
+app.delete("//api/legislation",checkCookie, senatorAccess, legislationController.deleteLegislation);
 
 app.listen("5004");
