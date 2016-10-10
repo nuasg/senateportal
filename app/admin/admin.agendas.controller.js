@@ -3,7 +3,7 @@
 	.controller("AdminAgendasController",["$scope", "$state", "$http", "$sce", function($scope, $state, $http, $sce){
 		'use strict';
 		var initial = new Date();
-		$http.get("api/terms/" + initial).success(function(data){
+		$http.get("senate/api/terms/" + initial).success(function(data){
 			var selected = null;
 			data.forEach(function(obj){
 				obj.end_date = new Date(obj.end_date);
@@ -21,7 +21,7 @@
 			}
 		});
 		$scope.getDocs = function(start, end){
-			var query = "api/document/" + start + "/" + end;
+			var query = "senate/api/document/" + start + "/" + end;
 			var months = {
 				1:'January',
 				2:'February',

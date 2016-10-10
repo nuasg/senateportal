@@ -9,7 +9,7 @@
 			}
 		}
 		$scope.logout = function () {
-			$http.post("/logout").success(function(){
+			$http.post("/senate/logout").success(function(){
 				window.location.reload(true);
 			});
 		}

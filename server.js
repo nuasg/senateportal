@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // EJS and Passport Configuration
-app.use('/app',express.static(path.join(__dirname, "/app")));
+app.use('//app',express.static(path.join(__dirname, "/app")));
 app.set('views', path.join(__dirname, '/app'));
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
@@ -40,11 +40,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended': 'false'}));
 
 // Files
-app.use('/node_modules/jquery.min.js',express.static(path.join(__dirname, "/node_modules/jquery/dist/jquery.min.js")));
-app.use('/node_modules/bootstrap.js',express.static(path.join(__dirname, "/node_modules/bootstrap/dist/js/bootstrap.js")));
-app.use('/node_modules/angular.js',express.static(path.join(__dirname, "/node_modules/angular/angular.js")));
-app.use('/node_modules/angular-ui-router.js',express.static(path.join(__dirname, "/node_modules/angular-ui-router/release/angular-ui-router.js")));
-app.use('/node_modules/angular-filter.js',express.static(path.join(__dirname, "node_modules/angular-filter/dist/angular-filter.js")));
+app.use('//node_modules/jquery.min.js',express.static(path.join(__dirname, "/node_modules/jquery/dist/jquery.min.js")));
+app.use('//node_modules/bootstrap.js',express.static(path.join(__dirname, "/node_modules/bootstrap/dist/js/bootstrap.js")));
+app.use('//node_modules/angular.js',express.static(path.join(__dirname, "/node_modules/angular/angular.js")));
+app.use('//node_modules/angular-ui-router.js',express.static(path.join(__dirname, "/node_modules/angular-ui-router/release/angular-ui-router.js")));
+app.use('//node_modules/angular-filter.js',express.static(path.join(__dirname, "node_modules/angular-filter/dist/angular-filter.js")));
 
 app.use(session({
     secret: process.env.SENATOR_SECRET,

@@ -2,7 +2,7 @@
     angular.module("senator")
     .controller("SenateDocsController",["$scope", "$state", "$http", function($scope, $state, $http){
         'use strict';
-        $http.get("/api/document").success(
+        $http.get("/senate/api/document").success(
         function(data) {
             $scope.data = data.map(function(obj){
                 obj.weekOf = new Date(obj.weekOf);
@@ -14,7 +14,7 @@
                     idToLegislationMap[obj._id] = [obj.title, obj.weekOf];
                 }
             });
-            $http.get("/api/legislation").success(function(votes){
+            $http.get("/senate/api/legislation").success(function(votes){
                 var legislationToVoteMap = {};
                 votes.forEach(function(vote){
                     if (legislationToVoteMap[idToLegislationMap[vote.documentId][0]]) {

@@ -2,7 +2,7 @@
 	angular.module("senator")
 	.controller("AdminDochubController",["$scope", "$state", "$http", function($scope, $state, $http){
 		'use strict';
-		$http.get("/api/document").success(
+		$http.get("/senate/api/document").success(
 		function(data) {
 			$scope.data = data.map(function(obj){
 				obj.weekOf = new Date(obj.weekOf);
@@ -10,7 +10,7 @@
 			});
 		});
 		$scope.saveRow = function(row) {
-			$http.post("/api/document", row).success(
+			$http.post("/senate/api/document", row).success(
 				function(data) {
 					$scope.form = null;
 					$("#newDocument").modal('hide');
@@ -33,7 +33,7 @@
 			};
 			$http({
 			    method: 'DELETE',
-			    url: '/api/document',
+			    url: '/senate/api/document',
 			    data: req,
 			    headers: {'Content-Type': 'application/json;charset=utf-8'}
 			}).success(function(){
@@ -59,7 +59,7 @@
 				}
 			}
 			if (test) {
-				$http.put("/api/document", data).success(function(){
+				$http.put("/senate/api/document", data).success(function(){
 					$state.reload('admin');
 					$scope.edit = false;
 				}).error(alert);
@@ -72,7 +72,7 @@
 			$scope.form	= null;
 		}
 		$scope.getConfigValues = function () {
-			$http.get("/api/docType").success(function(data){
+			$http.get("/senate/api/docType").success(function(data){
                 $scope.types = data.map(function(obj){
                 	return obj.type;
                 });

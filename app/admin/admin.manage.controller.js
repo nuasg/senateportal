@@ -3,7 +3,7 @@
 	.controller("AdminManageController",["$scope", "$state", "$http", function($scope, $state, $http){
 		'use strict';
 		var getData = function () {
-			$http.get("/api/user").success(
+			$http.get("/senate/api/user").success(
 				function(data) {
 					$scope.users = data;
 				}
@@ -11,7 +11,7 @@
 		}
 		getData();
 		$scope.saveRow = function(row) {
-			$http.post("/api/user", row).success(
+			$http.post("/senate/api/user", row).success(
 				function(data) {
 					$scope.form = null;
 					$("#newUser").modal('hide');
@@ -30,7 +30,7 @@
 			};
 			$http({
 			    method: 'DELETE',
-			    url: '/api/user',
+			    url: '/senate/api/user',
 			    data: req,
 			    headers: {'Content-Type': 'application/json;charset=utf-8'}
 			}).success(getData).error(alert);
@@ -51,7 +51,7 @@
 				}
 			}
 			if (test) {
-				$http.put("/api/user", data).success(function(){
+				$http.put("/senate/api/user", data).success(function(){
 					getData();
 					$scope.edit = false;
 				}).error(alert);
