@@ -16,11 +16,11 @@ module.exports = function(passport) {
 		// LDAP Authentication
 	options = {
 		server: {
-			url: 'ldaps://registry.northwestern.edu:636',
+			url: process.env.LDAP_URL,
 			bindDn: process.env.LDAP_BIND_DN,
 			bindCredentials: process.env.LDAP_BIND_CREDENTIALS,
-			searchBase: 'dc=northwestern,dc=edu',
-			searchFilter: 'nuIdTag={{username}}'
+			searchBase: process.env.LDAP_BASE,
+			searchFilter: process.env.LDAP_FILTER
 		}
 	};
 

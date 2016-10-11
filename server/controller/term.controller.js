@@ -42,7 +42,7 @@ const isNewDate = (terms, newDate) => {
 
 const queryAPI = (callback) => {
 	request({
-		uri: "http://api.asg.northwestern.edu/terms/?key=Lin7aFgHOlr6q9qJ",
+		uri: process.env.API_KEY,
 		method: "GET"
 	}, callback);
 }
@@ -50,7 +50,7 @@ const queryAPI = (callback) => {
 // Code for getting all
 // request(
 // 	{
-// 		uri: "http://api.asg.northwestern.edu/terms/?key=Lin7aFgHOlr6q9qJ",
+// 		uri: process.env.API_KEY,
 // 		method: "GET"
 // 	}, function(err, response, body){
 // 		var data = JSON.parse(body);
