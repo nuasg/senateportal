@@ -116,10 +116,6 @@ const senatorAccess = (req, res, next) => {
 // routing
 require('./routes.js')(app, passport);
 
-app.get('/workaround', function(req,res){
-    res.sendFile(path.join(__dirname,"app/index.html"));
-});
-
 // Who Am I
 app.get("//api/whoami", checkCookie, (req, res) => {
     userController.findUser({

@@ -57,19 +57,19 @@
 			$('.modal-backdrop').remove();
 		}
 		$scope.checkAgendaExistence = function(values) {
-			values.forEach(function(val){
-				if (val.type == "Agenda") {
-					return true;
-				}
-			});
-			return false;
+            for (var i =0; i < values.length; i++){
+                if (values[i].type == "Agenda") {
+                    return true;
+                }
+            }
+            return false;
 		}
 		$scope.getAgendaLink = function(values) {
-			values.forEach(function(val){
-				if (val.type == "Agenda") {
-					return val.link;
-				}
-			});
+            for (var i =0; i < values.length; i++){
+                if (values[i].type == "Agenda") {
+                    return values[i].link;
+                }
+            }
 			return null;	
 		}
 	}])

@@ -46,7 +46,11 @@ module.exports.getLegislation = function (req, res) {
         find(request).
         exec().
         then(function(legislation) {
-            res.json(legislation);
+            if (legislation.length) {
+                res.json(legislation);
+            } else {
+                res.sendStatus(404);
+            }
         }).
         catch(function(err) {
             res.sendStatus(err);
@@ -58,7 +62,7 @@ module.exports.updateLegislation = function (req, res) {
     findDoc(req.body.documentId, function (doc) {
         if (doc.live) {
             Legislation.
-                findOneAndUpdate({_id: req.body._id}, req.body).
+                findOneAndUpdate({netid: req.body.netid, documentId: req.body.documentId}, req.body).
                 exec().
                 then(() => {
                     res.sendStatus(200);
