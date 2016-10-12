@@ -21,7 +21,8 @@
 			$("#vote").modal("hide");
 			$http.get("/senate/api/legislation/" + $scope.voteId).success(function(){
 				$http.put("/senate/api/legislation", req).success(function(){
-					alert("Thank you for voting");
+                    $state.reload('senate');
+					alert("Your vote has been changed");
 				}).error(function(value){
 					if (value == "Precondition Failed") {
 						alert("Voting has expired. Please refresh");
@@ -31,6 +32,7 @@
 				})
 			}).error(function(){
 				$http.post("/senate/api/legislation", req).success(function(){
+                    $state.reload('senate');
 					alert("Thank you for voting");
 				}).error(function(value){
 					if (value == "Precondition Failed") {

@@ -1,35 +1,35 @@
 <div class="row">
-	<div class="panel-group col-md-12 agendalist">
-		<div class="panel panel-default" ng-repeat="doc in data | orderBy: 'ordering'">
-			<div class="panel-heading">{{doc.title}}</div>
+	<div class="panel-group col-md-6 agendalist" ng-repeat="doc in data | orderBy: 'ordering'">
+		<div class="panel panel-default">
+      <div class="panel-heading" style="text-align:center;">{{doc.title}}</div>
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-md-1">
+					<div class="col-md-3">
 						<div class="right">
 							<b>Type</b>:
 						</div>
 					</div>
-					<div class="col-md-11">
+					<div class="col-md-9">
 						{{doc.type}}
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-1">
+					<div class="col-md-3">
 						<div class="right">
 							<b>Description</b>:
 						</div>
 					</div>
-					<div class="col-md-11">
+					<div class="col-md-9">
 						{{doc.description}}
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-1">
+					<div class="col-md-3">
 						<div class="right">
 							<b>Link</b>:
 						</div>
 					</div>
-					<div class="col-md-11">
+					<div class="col-md-9">
 						<a href="{{doc.link}}" target="_blank">{{doc.link}}</a>
 					</div>
 				</div>

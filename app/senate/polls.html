@@ -3,7 +3,7 @@
 		<div class="panel panel-default" ng-repeat="leg in data | orderBy: 'ordering'" ng-if="leg.type === 'Legislation'">
 			<div class="panel-heading">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" href="senate#{{leg._id}}">{{leg.title}}</a>
+					<a data-toggle="collapse" href="senate/senate#{{leg._id}}">{{leg.title}}</a>
 					<div class="live" ng-show="leg.live">LIVE!</div>
 				</h4>
 			</div>
