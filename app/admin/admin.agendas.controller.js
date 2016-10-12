@@ -56,5 +56,21 @@
 			$('body').removeClass('modal-open');
 			$('.modal-backdrop').remove();
 		}
+		$scope.checkAgendaExistence = function(values) {
+			values.forEach(function(val){
+				if (val.type == "Agenda") {
+					return true;
+				}
+			});
+			return false;
+		}
+		$scope.getAgendaLink = function(values) {
+			values.forEach(function(val){
+				if (val.type == "Agenda") {
+					return val.link;
+				}
+			});
+			return null;	
+		}
 	}])
 }());
