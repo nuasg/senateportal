@@ -3,7 +3,6 @@ module.exports = function(app, passport) {
 //// VIEWS ---------------------------------------------------------------------
 	// home page
 	app.get('/', function(req, res) {
-        debugger;
 		if (req.user) {
 			res.render('index.html', {
 				user: req.user
