@@ -78,6 +78,12 @@
                 });
             });
 		}
+		$scope.toggleLive = function(row) {
+			row.live = !row.live;
+			$http.put("/senate/api/document", row).success(function(){
+				$state.reload('admin');
+			});
+		}
 	}]);
 	angular.module("senator")
 		.filter( 'domain', function () {
