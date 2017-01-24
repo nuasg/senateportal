@@ -6,7 +6,7 @@
                 $state.go("admin");
             } else {
                 $state.go("senate");
-            } 
+            }
         });
 		$scope.submit = function(){
 			if ($scope.role === "Senator") {

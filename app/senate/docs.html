@@ -13,7 +13,7 @@
 		<tr ng-repeat= "row in data| orderBy: ['weekOf','ordering'] : true |  fuzzy: search">
 			<td>{{row.weekOf | date: 'shortDate'}}</td>
 			<td>{{row.title}}</td>
-			<td><a href="{{row.link}}" target="_blank">{{row.link}}</a></td>
+			<td><a href="{{row.link}}" target="_blank">{{row.link | domain}}</a></td>
 			<td>{{row.description}}</td>
 			<td>{{row.type}}</td>
 		</tr>

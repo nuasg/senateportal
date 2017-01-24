@@ -85,7 +85,7 @@ module.exports.updateDocument = function (req, res) {
 	req.body.weekOf = moment(req.body.weekOf).startOf('week').add(3, 'days').add(19, 'hours').toJSON();
 	req.body.order = parseInt(req.body.order, 10);
 	if (req.body.live) {
-		req.body.live = (req.body.live === "true");
+		req.body.live = (req.body.live === "true" || req.body.live === true);
 	}
 	Document.
 		findOneAndUpdate({ '_id': req.body._id }, req.body).
