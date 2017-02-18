@@ -15,6 +15,8 @@ const docTypeController = require('./server/controller/docType.controller');
 const documentController = require("./server/controller/document.controller");
 const termController = require("./server/controller/term.controller");
 const legislationController = require("./server/controller/legislation.controller");
+const attendenceController = require("./server/controller/attendence.controller");
+
 // Databases
 const promise = require('bluebird');
 mongoose.Promise = promise;
@@ -155,5 +157,7 @@ app.get("//api/legislation", checkCookie, legislationController.getLegislations)
 app.get("//api/legislation/:documentId", checkCookie, legislationController.getLegislation);
 app.put("//api/legislation", checkCookie, senatorAccess, legislationController.updateLegislation);
 app.delete("//api/legislation",checkCookie, senatorAccess, legislationController.deleteLegislation);
-
+// Attendence
+app.post("//api/attendence", checkCookie, adminAccess, attendenceController.addAttendence);
+app.get("//api/attendence", checkCookie, adminAccess, attendenceController.getAttendence);
 app.listen("5004");
