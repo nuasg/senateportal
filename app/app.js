@@ -59,7 +59,11 @@
 						"configure@admin": {
 							templateUrl: "app/admin/configure.html",
 							controller: "AdminConfigureController"
-						}
+						},
+                        "attendence@admin": {
+                            templateUrl: "app/admin/attendence.html",
+                            controller: "AdminAttendenceController"
+                        }
 					}
 				});
 		})
