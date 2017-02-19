@@ -159,5 +159,5 @@ app.put("//api/legislation", checkCookie, senatorAccess, legislationController.u
 app.delete("//api/legislation",checkCookie, senatorAccess, legislationController.deleteLegislation);
 // Attendence
 app.post("//api/attendence", checkCookie, adminAccess, attendenceController.addAttendence);
-app.get("//api/attendence", checkCookie, adminAccess, attendenceController.getAttendence);
+app.get("//api/attendence/:start/:end", checkCookie, adminAccess, attendenceController.getAttendenceByDateRange);
 app.listen("5004");

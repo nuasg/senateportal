@@ -1,5 +1,18 @@
 <div class="row">
-  <button class="col-md-6 col-md-offset-3 btn btn-default" data-toggle="modal" data-target="#takeAttendence" ng-click="getData()">Take Attendence</button>
+  <button class="col-md-6 col-md-offset-3 btn btn-default" data-toggle="modal" data-target="#takeAttendence" ng-click="getUsers()">Take Attendence</button>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <h2>{{dates.selected.name}}</h2>
+    </div>
+    <div class="col-md-3 form-inline timePeriod">
+        <label class="control-label">Term:</label>
+        <select class="form-control"
+            ng-options="option.name for option in dates.data track by option.name"
+            ng-model="dates.selected"
+            ng-change="getAttendence(dates.selected.start_date, dates.selected.end_date)">
+        </select>
+    </div>
 </div>
 <div class="row">
   <div class="col-md-4 panel panel-default">
