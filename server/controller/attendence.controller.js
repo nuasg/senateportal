@@ -45,9 +45,12 @@ module.exports.getAttendenceByDateRange = function (req, res) {
             data.forEach(function(obj){
                 var name = obj.firstName + " " + obj.lastName;
                 if (name in final) {
-                    final[name]++;
+                    final[name].times++;
                 } else {
-                    final[name] = 1;
+                    final[name] = {
+                        times: 1,
+                        group: obj.group
+                    };
                 }
             });
             res.json(final);
