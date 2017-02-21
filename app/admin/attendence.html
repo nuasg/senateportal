@@ -16,8 +16,10 @@
 </div>
 <div class="row">
   <div class="col-md-4 panel panel-default" ng-repeat="(key, val) in quarterAttendence" ng-if="showAttendence">
+    <div class="panel-heading"><b>{{val.group}}</b> {{key}}</div>
     <div class="panel-body">
-      <b>{{val.group}}</b> {{key}}: {{val.times}}
+        Attendence: {{val.times.here}}
+        Absence: {{val.times.absent}}
     </div>
   </div>
   <div ng-if="!showAttendence" style="text-align: center;">

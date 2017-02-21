@@ -6,6 +6,7 @@ var attendenceSchema = new Schema({
     firstName       : String,
     lastName        : String,
     email           : String,
+    present         : Boolean,
     group           : String
 })
 

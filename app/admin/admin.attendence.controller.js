@@ -21,12 +21,22 @@
                 $scope.getAttendence(selected.start_date,selected.end_date);  
             }
         });
-        $scope.getAttendence = function(start, end){
-            var query = "senate/api/attendence/" + start + "/" + end;
+        var getAggregate = function(start, end){
+            var query = "senate/api/attendence/aggregate/" + start + "/" + end;
             $http.get(query).success(function(data){
                 $scope.quarterAttendence = data;
                 $scope.showAttendence = Object.keys(data).length > 0;
             });
+        }
+        var getQuarter = function(start, end){
+            var query = "senate/api/attendence/quarter/" + start + "/" + end;
+            $http.get(query).success(function(data){
+                console.log(data);
+            });
+        }
+        $scope.getAttendence = function(start, end) {
+            getAggregate(start, end);
+            getQuarter(start, end);
         }
         $scope.getUsers = function () {
             $http.get("/senate/api/user").success(function(data) {
@@ -40,14 +50,13 @@
         }
         $scope.saveAttendence = function () {
             $scope.users.forEach(function(obj) {
-                if (obj.present) {
-                    $http.post("/senate/api/attendence",{
-                        firstName: obj.firstName,
-                        lastName: obj.lastName,
-                        email: obj.email,
-                        group: obj.group
-                    });
-                }
+                $http.post("/senate/api/attendence",{
+                    firstName: obj.firstName,
+                    lastName: obj.lastName,
+                    email: obj.email,
+                    present: obj.present,
+                    group: obj.group
+                });
             });
         }
 	}])

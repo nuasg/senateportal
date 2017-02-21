@@ -16,6 +16,51 @@ module.exports.addAttendence = function (req, res) {
         });
 }
 
+module.exports.getAttendence = function (req, res) {
+    var start = new Date(req.params.start);
+    var end = new Date(req.params.end);
+    Attendence.
+        aggregate([
+            {
+                $match: {
+                    'weekOf': 
+                        {
+                            $gte: start,
+                            $lte: end
+                        }
+                }
+            },
+            {
+                $project: {
+                    firstName: 1,
+                    lastName: 1,
+                    email: 1,
+                    group: 1,
+                    present: 1
+                }
+            }
+        ]).
+        exec().
+        then(function (data) {
+            var final = {}
+            data.forEach(function(obj){
+                if (obj.weekOf in final) {
+                    final[weekOf].present += obj.present ? 1 : 0;
+                    final[weekOf].absent += obj.present ? 0 : 1;
+                } else {
+                    final[weekOf] = {
+                        present: obj.present ? 1 : 0,
+                        absent: obj.present ? 0 : 1
+                    };
+                }
+            });
+            res.json(final);
+        }).
+        catch(function (err) {
+            res.send(err);
+        });
+}
+
 module.exports.getAttendenceByDateRange = function (req, res) {
     var start = new Date(req.params.start);
     var end = new Date(req.params.end);
@@ -35,7 +80,8 @@ module.exports.getAttendenceByDateRange = function (req, res) {
                     firstName: 1,
                     lastName: 1,
                     email: 1,
-                    group: 1
+                    group: 1,
+                    present: 1
                 }
             }
         ]).
@@ -45,10 +91,17 @@ module.exports.getAttendenceByDateRange = function (req, res) {
             data.forEach(function(obj){
                 var name = obj.firstName + " " + obj.lastName;
                 if (name in final) {
-                    final[name].times++;
+                    if (obj.present) {
+                        final[name].times.here++;
+                    } else {
+                        final[name].times.absent++;
+                    }
                 } else {
                     final[name] = {
-                        times: 1,
+                        times: {
+                            here: obj.present ? 1 : 0,
+                            absent: obj.present ? 0 : 1
+                        },
                         group: obj.group
                     };
                 }
@@ -58,5 +111,4 @@ module.exports.getAttendenceByDateRange = function (req, res) {
         catch(function (err) {
             res.send(err);
         });
-
 }
