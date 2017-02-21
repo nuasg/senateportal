@@ -7,7 +7,8 @@ var attendenceSchema = new Schema({
     lastName        : String,
     email           : String,
     present         : Boolean,
-    group           : String
+    group           : String,
+    period          : String
 })
 
 module.exports = mongoose.model('attendence', attendenceSchema);

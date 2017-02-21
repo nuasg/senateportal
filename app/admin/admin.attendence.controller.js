@@ -4,6 +4,7 @@
 		'use strict';
         var initial = new Date();
         $scope.today = initial.toLocaleDateString();
+        $scope.state = true;
         $http.get("senate/api/terms/" + initial).success(function(data){
             var selected = null;
             data.forEach(function(obj){
@@ -21,6 +22,14 @@
                 $scope.getAttendence(selected.start_date,selected.end_date);  
             }
         });
+        $http.get("/senate/api/user").success(function(data) {
+            $scope.users = data.filter(function(item){
+                if (item.role == "Senator" && item.firstName && item.active) {
+                    item.present = false;
+                    return item;
+                }
+            });
+        });
         var getAggregate = function(start, end){
             var query = "senate/api/attendence/aggregate/" + start + "/" + end;
             $http.get(query).success(function(data){
@@ -31,31 +40,33 @@
         var getQuarter = function(start, end){
             var query = "senate/api/attendence/quarter/" + start + "/" + end;
             $http.get(query).success(function(data){
-                console.log(data);
+                $scope.dateTable = data;
             });
         }
         $scope.getAttendence = function(start, end) {
             getAggregate(start, end);
             getQuarter(start, end);
         }
-        $scope.getUsers = function () {
-            $http.get("/senate/api/user").success(function(data) {
-                $scope.users = data.filter(function(item){
-                    if (item.role == "Senator" && item.firstName && item.active) {
-                        item.present = false;
-                        return item;
-                    }
-                });
-            });
-        }
         $scope.saveAttendence = function () {
+            var total = $scope.users.length;
+            var curr = 1;
             $scope.users.forEach(function(obj) {
                 $http.post("/senate/api/attendence",{
                     firstName: obj.firstName,
                     lastName: obj.lastName,
                     email: obj.email,
                     present: obj.present,
-                    group: obj.group
+                    group: obj.group,
+                    period: $scope.period
+                }).success(function(data){
+                    if (curr == total) {
+                        $("#takeAttendence").modal("hide");
+                        $("body").removeClass("modal-open");
+                        $(".modal-backdrop").remove();
+                        alert("Attendence Saved");
+                        $scope.getAttendence($scope.dates.selected.start_date, $scope.dates.selected.end_date);
+                    }
+                    curr++;
                 });
             });
         }

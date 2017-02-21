@@ -36,7 +36,9 @@ module.exports.getAttendence = function (req, res) {
                     lastName: 1,
                     email: 1,
                     group: 1,
-                    present: 1
+                    present: 1,
+                    weekOf: 1,
+                    period: 1
                 }
             }
         ]).
@@ -44,7 +46,9 @@ module.exports.getAttendence = function (req, res) {
         then(function (data) {
             var final = {}
             data.forEach(function(obj){
-                if (obj.weekOf in final) {
+                var weekOf = obj.weekOf.toLocaleDateString();
+                weekOf += " " + obj.period;
+                if (weekOf in final) {
                     final[weekOf].present += obj.present ? 1 : 0;
                     final[weekOf].absent += obj.present ? 0 : 1;
                 } else {

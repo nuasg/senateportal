@@ -1,30 +1,66 @@
 <div class="row" style="padding:5px;">
-  <button class="col-md-6 col-md-offset-3 btn btn-default" data-toggle="modal" data-target="#takeAttendence" ng-click="getUsers()">Take Attendence</button>
+  <button class="col-md-6 col-md-offset-3 btn btn-default" data-toggle="modal" data-target="#takeAttendence">Take Attendence</button>
 </div>
 <div class="row">
-    <div class="col-md-9">
-        <h2>{{dates.selected.name}}</h2>
-    </div>
-    <div class="col-md-3 form-inline timePeriod">
-        <label class="control-label">Term:</label>
-        <select class="form-control"
-            ng-options="option.name for option in dates.data track by option.name"
-            ng-model="dates.selected"
-            ng-change="getAttendence(dates.selected.start_date, dates.selected.end_date)">
-        </select>
-    </div>
+  <div class="col-md-9">
+    <h2>{{dates.selected.name}}</h2>
+  </div>
+  <div class="col-md-3 form-inline timePeriod" style="margin-top:20px;">
+    <label class="control-label">Term:</label>
+    <select class="form-control"
+      ng-options="option.name for option in dates.data track by option.name"
+      ng-model="dates.selected"
+      ng-change="getAttendence(dates.selected.start_date, dates.selected.end_date)">
+    </select>
+  </div>
 </div>
 <div class="row">
-  <div class="col-md-4 panel panel-default" ng-repeat="(key, val) in quarterAttendence" ng-if="showAttendence">
-    <div class="panel-heading"><b>{{val.group}}</b> {{key}}</div>
-    <div class="panel-body">
-        Attendence: {{val.times.here}}
-        Absence: {{val.times.absent}}
-    </div>
+  <div class="btn-group col-md-4 col-md-offset-4">
+    <a ng-click="state=true" ng-class="{disabled: state}" class="btn btn-default col-md-6">Dates</a>
+    <a ng-click="state=false" ng-class="{disabled: (state== 0)}"  class="btn btn-default col-md-6">Aggregates</a>
   </div>
-  <div ng-if="!showAttendence" style="text-align: center;">
-    No Attendence Records Yet
-  </div>
+</div>
+<br/>
+<div ng-if="!showAttendence" style="text-align: center;">
+  No Attendence Records Yet
+</div>
+<div class="row" ng-if="state && showAttendence">
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Present</th>
+        <th>Absent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="(key, val) in dateTable">
+        <td>{{key}}</td>
+        <td>{{val.present}}</td>
+        <td>{{val.absent}}</td>
+      </tr>
+    </tbody>
+  </table> 
+</div>
+<div class="row" ng-if="!state && showAttendence">
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+        <th>Group</th>
+        <th>Name</th>
+        <th>Attendence</th>
+        <th>Absence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="(key, val) in quarterAttendence">
+        <td>{{val.group}}</td>
+        <td>{{key}}</td>
+        <td>{{val.times.here}}</td>
+        <td>{{val.times.absent}}</td>
+      </tr>
+    </tbody>
+  </table> 
 </div>
 <div class="modal fade" id="takeAttendence">
   <div class="modal-dialog">
@@ -33,7 +69,16 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">Attendence: {{today}}</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body form-horizontal">
+        <div class="form-group">
+          <label class="col-md-2 control-label">Period:</label>
+          <div class="col-md-9">
+            <select class="form-control" ng-model="period">
+              <option>Start</option>
+              <option>End</option>
+            </select>
+          </div>
+        </div>
         <table class="table table-striped table-hover ">
           <thead>
             <tr>
