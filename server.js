@@ -84,7 +84,7 @@ const adminAccess = (req, res, next) => {
 			body: {
 				netid: req.session.passport.user.uid,
 				success: (user) => {
-					if (user.role === "Admin") {
+					if (user.role === "Admin" && user.active) {
 						next();	
 					} else {
 						res.sendStatus(500);
@@ -103,7 +103,7 @@ const senatorAccess = (req, res, next) => {
         body: {
             netid: req.session.passport.user.uid,
             success: (user) => {
-                if (user.role === "Senator") {
+                if (user.role === "Senator" && user.active) {
                     next();
                 } else {
                     res.sendStatus(500);
