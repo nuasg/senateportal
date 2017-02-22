@@ -1,14 +1,17 @@
 (function(){
 	angular.module("senator")
-	.controller("AdminDochubController",["$scope", "$state", "$http", function($scope, $state, $http){
+	.controller("AdminDochubController",["$scope", "$http", function($scope, $http){
 		'use strict';
-		$http.get("/senate/api/document").success(
-		function(data) {
-			$scope.data = data.map(function(obj){
-				obj.weekOf = new Date(obj.weekOf);
-				return obj;
-			});
-		});
+        var pullData = function () {
+            $http.get("/senate/api/document").success(
+            function(data) {
+                $scope.data = data.map(function(obj){
+                    obj.weekOf = new Date(obj.weekOf);
+                    return obj;
+                });
+            });
+        }
+        pullData();
 		$scope.saveRow = function(row) {
 			$http.post("/senate/api/document", row).success(
 				function(data) {
@@ -17,7 +20,7 @@
 					$('body').removeClass('modal-open');
 					$('.modal-backdrop').remove();
 					alert("Document Saved");
-					$state.reload('admin');
+                    pullData();
 				}
 			).error(alert);
 		}
@@ -37,7 +40,7 @@
 			    data: req,
 			    headers: {'Content-Type': 'application/json;charset=utf-8'}
 			}).success(function(){
-				$state.reload('admin');
+                pullData();
 			}).error(alert);
 		}
 		$scope.editFocus = function (row) {
@@ -60,7 +63,7 @@
 			}
 			if (test) {
 				$http.put("/senate/api/document", data).success(function(){
-					$state.reload('admin');
+                    pullData();
 					$scope.edit = false;
 				}).error(alert);
 			} else {
@@ -81,9 +84,19 @@
 		$scope.toggleLive = function(row) {
 			row.live = !row.live;
 			$http.put("/senate/api/document", row).success(function(){
-				$state.reload('admin');
+                pullData();
 			});
 		}
+        $scope.amend = function (row) {
+            var save = JSON.parse(JSON.stringify(row));
+            delete save["$$hashKey"];
+            delete save["__v"];
+            delete save["_id"];
+            save.title = "Amendment to " + save.title;
+            $http.post("/senate/api/document", save).success(function(){
+                pullData();
+            });
+        }
 	}]);
 	angular.module("senator")
 		.filter( 'domain', function () {

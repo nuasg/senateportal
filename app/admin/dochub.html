@@ -40,9 +40,15 @@
 								</a>
 							</li>
 							<li>
-								<a  ng-click="toggleLive(row)">
+								<a  ng-click="toggleLive(row)" ng-if="row.type=='Legislation'">
 									Toggle Live
-								</a>
+                </a>
+              </li>
+              <li>
+                <a ng-click="amend(row)" ng-if="row.type=='Legislation'">
+                  Create Amendment
+                </a>
+              </li>
 						</ul>
 					</div>
 				</td>

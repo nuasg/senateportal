@@ -116,3 +116,20 @@ module.exports.getAttendenceByDateRange = function (req, res) {
             res.send(err);
         });
 }
+
+module.exports.sessionAttendence = function (req, res) {
+    var weekOf = new Date(req.params.date);
+    weekOf = moment(weekOf).startOf('week').add(3, 'days').add(19, 'hours').toDate();
+    Attendence.
+        find({
+            weekOf: weekOf,
+            period: req.params.period    
+        }).
+        exec().
+        then(function(attendences) {
+            res.json(attendences);
+        }).
+        catch(function(err) {
+            res.sendStatus(err);
+        });
+}

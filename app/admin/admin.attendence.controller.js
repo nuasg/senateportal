@@ -50,25 +50,40 @@
         $scope.saveAttendence = function () {
             var total = $scope.users.length;
             var curr = 1;
-            $scope.users.forEach(function(obj) {
-                $http.post("/senate/api/attendence",{
-                    firstName: obj.firstName,
-                    lastName: obj.lastName,
-                    email: obj.email,
-                    present: obj.present,
-                    group: obj.group,
-                    period: $scope.period
-                }).success(function(data){
-                    if (curr == total) {
-                        $("#takeAttendence").modal("hide");
-                        $("body").removeClass("modal-open");
-                        $(".modal-backdrop").remove();
-                        alert("Attendence Saved");
-                        $scope.getAttendence($scope.dates.selected.start_date, $scope.dates.selected.end_date);
-                    }
-                    curr++;
+            if ($scope.period === undefined) {
+                alert("Please fill in period for attendence");
+            } else {
+                $scope.users.forEach(function(obj) {
+                    $http.post("/senate/api/attendence",{
+                        firstName: obj.firstName,
+                        lastName: obj.lastName,
+                        email: obj.email,
+                        present: obj.present,
+                        group: obj.group,
+                        period: $scope.period
+                    }).success(function(data){
+                        if (curr == total) {
+                            $("#takeAttendence").modal("hide");
+                            $("body").removeClass("modal-open");
+                            $(".modal-backdrop").remove();
+                            alert("Attendence Saved");
+                            $scope.getAttendence($scope.dates.selected.start_date, $scope.dates.selected.end_date);
+                        }
+                        curr++;
+                    });
                 });
-            });
+            }
+        }
+        $scope.openSession = function (id) {
+            id = id.split(" ");
+            var dateString = id[0];
+            var period = id[1];
+            $scope.selectedDate = dateString;
+            $scope.selectedPeriod = period;
+            $http.get("/senate/api/attendence/session/" + new Date(dateString) + "/" + period)
+                .success(function(data){
+                    $scope.session = data;
+                });
         }
 	}])
 }());
