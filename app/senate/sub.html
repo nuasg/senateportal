@@ -1,16 +1,19 @@
-<div ng-if="user.active && !existingSub">
-    <h3 style="text-align:center;">Enter Netid of Replacement</h3>
-    <div class="form-horizontal">
-        <div class="form-group">
-            <label class="col-md-2 control-label">Netid:</label>
-            <div class="col-md-9">
-                <input type="text" class="form-control">
-            </div>
-        </div>
+<div ng-if="user.active && !existingSub && canSub">
+  <h3 style="text-align:center;">Enter Netid of Replacement</h3>
+  <br/><br/>
+  <div class="form-horizontal">
+    <div class="form-group">
+      <label class="col-md-2 col-md-offset-2 control-label">Netid:</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control" ng-model="subNetid">
+      </div>
+      <div class="col-md-1 btn btn-success" ng-click="addSub(subNetid)">Submit</div>
     </div>
+  </div>
 </div>
-<div ng-if="!user.active && existingSub">
-    <div class="btn btn-default">
-        Release
-    </div>
+<div ng-if="!user.active && existingSub && canSub">
+  <h3 style="text-align:center;">You have an active Sub that you can relieve</h3>
+  <div class="btn btn-default col-md-offset-4 col-md-4" ng-click="relieve()">
+    Relieve
+  </div>
 </div>

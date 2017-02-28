@@ -98,7 +98,7 @@ module.exports.addSub = function (req, res) {
 		exec().
 		then(function(users) {
 			if (users.length > 0) {
-				User.findOneAndUpdate({netid: req.body.subNetid}, {$set: {active: true}})
+				User.findOneAndUpdate({netid: req.body.subNetid}, {$set: {active: true, sub: req.body.senatorNetid}})
 					.exec()
 					.then(function(){
 						res.sendStatus(200);
@@ -112,7 +112,7 @@ module.exports.addSub = function (req, res) {
 					role: "Senator",
 					group: req.body.group,
 					active: true,
-					sub: 	true
+					sub: 	req.body.senatorNetid
 				});
 				user.
 					save().
@@ -131,16 +131,21 @@ module.exports.addSub = function (req, res) {
 
 module.exports.findSub = function (req, res) {
 	User.
-		find({sub : req.params.netid}).
+		findOne({sub : req.params.netid, active: true}).
 		exec().
 		then(function(user){
-			if (user.length) {
-				res.sendStatus(200);
-			} else {
-				res.sendStatus(400);
-			}
+			res.json(user);
 		}).
 		catch(function(err) {
 			res.sendStatus(err);
 		});
+}
+
+module.exports.relieveSub = function (req, res) {
+    User.findOneAndUpdate({"netid": req.body.senatorNetid }, {$set: {active: true}}).exec();
+    User.findOneAndUpdate({"netid": req.body.subNetid }, {$set: {active: false}})
+        .exec()
+        .then(function(user){ 
+            res.send(200);
+        });
 }
