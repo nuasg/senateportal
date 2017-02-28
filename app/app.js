@@ -9,7 +9,8 @@
 					controller: "HomeController"
 				})
 				.state("senate", {
-					url: "/senate", 
+					url: "/senate",
+					controller: "HomeController",
 					views: {
 						"": {
 							templateUrl: "app/senate/senate.html",
@@ -30,6 +31,10 @@
 						"results@senate": {
 							templateUrl: "app/senate/results.html",
 							controller: "SenateDocsController"
+						},
+						"sub@senate": {
+							templateUrl: "app/senate/sub.html",
+							controller: "SenateSubController"
 						}
 					}
 				})

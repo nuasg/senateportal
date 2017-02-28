@@ -8,7 +8,8 @@ var UserSchema = new Schema({
 	lastName		: String,
 	group			: String,
 	role 			: String,
-    active          : Boolean
+    active          : Boolean,
+    sub             : String
 })
 
 module.exports = mongoose.model('User', UserSchema);

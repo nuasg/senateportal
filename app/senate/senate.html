@@ -20,6 +20,9 @@
 			<div class="tab-pane fade" id="docs">
 				<div ui-view="docs" class="docs"></div>
 			</div>
+			<div class="tab-pane fade" id="sub" ng-if="!user.sub">
+				<div ui-view="sub" class="sub"></div>
+			</div>
 		</div>
 	</div>
 </div>

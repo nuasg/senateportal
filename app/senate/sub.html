@@ -1,0 +1,16 @@
+<div ng-if="user.active && !existingSub">
+    <h3 style="text-align:center;">Enter Netid of Replacement</h3>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-md-2 control-label">Netid:</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-if="!user.active && existingSub">
+    <div class="btn btn-default">
+        Release
+    </div>
+</div>

@@ -88,3 +88,59 @@ module.exports.deleteUser = function (req, res) {
 			res.sendStatus(err);
 		});
 }
+
+module.exports.addSub = function (req, res) {
+	User.findOneAndUpdate({ netid: req.body.senatorNetid }, {$set: {active: false}}).exec();
+	User.
+		find({
+			netid: req.body.subNetid
+		}).
+		exec().
+		then(function(users) {
+			if (users.length > 0) {
+				User.findOneAndUpdate({netid: req.body.subNetid}, {$set: {active: true}})
+					.exec()
+					.then(function(){
+						res.sendStatus(200);
+					})
+					.catch(function(err){
+						res.sendStatus(err);
+					})
+			} else {
+				var user = new User({
+					netid: req.body.subNetid,
+					role: "Senator",
+					group: req.body.group,
+					active: true,
+					sub: 	true
+				});
+				user.
+					save().
+					then(function () {
+						res.sendStatus(200);
+					}).
+					catch(function (err) {
+						res.sendStatus(err);
+					});
+			}
+		}).
+		catch(function(err) {
+			res.sendStatus(err);
+		});
+}
+
+module.exports.findSub = function (req, res) {
+	User.
+		find({sub : req.params.netid}).
+		exec().
+		then(function(user){
+			if (user.length) {
+				res.sendStatus(200);
+			} else {
+				res.sendStatus(400);
+			}
+		}).
+		catch(function(err) {
+			res.sendStatus(err);
+		});
+}

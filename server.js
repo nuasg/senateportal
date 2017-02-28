@@ -140,6 +140,8 @@ app.put("//api/document", checkCookie, adminAccess, documentController.updateDoc
 app.get("//api/document/:start/:end", checkCookie, documentController.getdocumentByDateRange);
 // Users
 // app.get("//api/user", userController.authenticate, userController.getAllUsers);
+app.get("//api/user/sub/:netid", checkCookie, userController.findSub);
+app.post("//api/user/sub", checkCookie, userController.addSub);
 app.post("//api/user", checkCookie, adminAccess, userController.addUser);
 app.get("//api/user", checkCookie, adminAccess, userController.getUsers);
 app.put("//api/user", checkCookie, adminAccess, userController.updateUser);
