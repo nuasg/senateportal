@@ -134,21 +134,23 @@ app.get("//api/whoami", checkCookie, (req, res) => {
 app.get("//api/document/:id", checkCookie, documentController.getDocumentId);
 app.get("//api/document/date/:date", checkCookie, documentController.getDocumentByWeek);
 app.post("//api/document", checkCookie, adminAccess, documentController.addDocument);
-app.get("//api/document", checkCookie, documentController.findAllDocuments);
 app.delete("//api/document", checkCookie, adminAccess, documentController.deleteDocument);
 app.put("//api/document", checkCookie, adminAccess, documentController.updateDocument);
-app.get("//api/document/:start/:end", checkCookie, documentController.getdocumentByDateRange);
+// Public facing API
+app.get("//api/document", documentController.findAllDocuments);
+app.get("//api/document/:start/:end", documentController.getdocumentByDateRange);
 // Users
 // app.get("//api/user", userController.authenticate, userController.getAllUsers);
 app.get("//api/user/sub/:netid", checkCookie, userController.findSub);
 app.post("//api/user/sub", checkCookie, userController.addSub);
 app.post("//api/user/sub/relieve", checkCookie, userController.relieveSub);
 app.post("//api/user", checkCookie, adminAccess, userController.addUser);
-app.get("//api/user", checkCookie, adminAccess, userController.getUsers);
 app.put("//api/user", checkCookie, adminAccess, userController.updateUser);
 app.delete("//api/user",checkCookie, adminAccess, userController.deleteUser);
+// Public facing API
+app.get("//api/user", userController.getUsers);
 // Terms
-app.get("//api/terms/:date", checkCookie, termController.getTerms);
+app.get("//api/terms/:date", termController.getTerms);
 // DocTypes
 app.post("//api/docType", checkCookie, adminAccess, docTypeController.addDocType);
 app.get("//api/docType", checkCookie, docTypeController.getDocTypes);
@@ -156,10 +158,11 @@ app.put("//api/docType", checkCookie, adminAccess, docTypeController.updateDocTy
 app.delete("//api/docType",checkCookie, adminAccess, docTypeController.deleteDocType);
 // Legislation
 app.post("//api/legislation", checkCookie, senatorAccess, legislationController.addLegislation);
-app.get("//api/legislation", checkCookie, legislationController.getLegislations);
-app.get("//api/legislation/:documentId", checkCookie, legislationController.getLegislation);
 app.put("//api/legislation", checkCookie, senatorAccess, legislationController.updateLegislation);
 app.delete("//api/legislation",checkCookie, senatorAccess, legislationController.deleteLegislation);
+// Public Facing API
+app.get("//api/legislation", legislationController.getLegislations);
+app.get("//api/legislation/:documentId", legislationController.getLegislation);
 // Attendence
 app.post("//api/attendence", checkCookie, adminAccess, attendenceController.addAttendence);
 app.get("//api/attendence/aggregate/:start/:end", checkCookie, adminAccess, attendenceController.getAttendenceByDateRange);
