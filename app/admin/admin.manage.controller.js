@@ -67,10 +67,11 @@
 			$scope.selectedRow = row;
 			$http.get("/senate/api/user/sub/" + row.netid).success(function(data){
 				if (data !== null) {
-					$("#sub").modal('hide');
+                    alert("There is already a sub!");
+                    $("#sub").modal('hide');
 					$('body').removeClass('modal-open');
 					$('.modal-backdrop').remove();
-					alert("There is already a sub!");
+
 				}
 			})
 		}
