@@ -18,6 +18,10 @@
                 $http.get("/senate/api/legislation").success(function(votes){
                     var legislationToVoteMap = {};
                     votes.forEach(function(vote){
+                        var pair = idToLegislationMap[vote.documentId];
+                        if (pair == undefined) {
+                            return;
+                        }
                         if (legislationToVoteMap[idToLegislationMap[vote.documentId][0]]) {
                             if (legislationToVoteMap[idToLegislationMap[vote.documentId][0]][vote.vote]) {
                                 legislationToVoteMap[idToLegislationMap[vote.documentId][0]][vote.vote] += 1;
