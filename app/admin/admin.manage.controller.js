@@ -63,5 +63,44 @@
 			$scope.edit = false;
 			$scope.form	= null;
 		}
+		$scope.sub = function (row) {
+			$scope.selectedRow = row;
+			$http.get("/senate/api/user/sub/" + row.netid).success(function(data){
+				if (data !== null) {
+					$("#sub").modal('hide');
+					$('body').removeClass('modal-open');
+					$('.modal-backdrop').remove();
+					alert("There is already a sub!");
+				}
+			})
+		}
+		$scope.addSub = function (subNetid) {
+			$http.post("/senate/api/user/sub", {
+                "subNetid": subNetid,
+                "senatorNetid": $scope.selectedRow.netid,
+                "group": $scope.selectedRow.group
+            }).success(function(data){
+				$("#sub").modal('hide');
+				$('body').removeClass('modal-open');
+				$('.modal-backdrop').remove();
+                getData();
+				alert("Added Sub");
+            });
+		}
+		$scope.relieve = function (row) {
+			$http.get("/senate/api/user/sub/" + row.netid).success(function(data){
+				if (data !== null) {
+					$http.post("/senate/api/user/sub/relieve",{
+						"subNetid": data.netid,
+						"senatorNetid": row.netid
+					}).success(function(data){
+						alert("Relieved Sub of duties");
+						getData();
+					});
+				} else {
+					alert("Selected person is not a sub");
+				}
+			});
+		}
 	}]);
 }());
