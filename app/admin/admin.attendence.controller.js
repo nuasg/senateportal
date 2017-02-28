@@ -88,18 +88,5 @@
                     $scope.session = data;
                 });
         }
-        $scope.sub = function (row) {
-            $scope.selectedRow = row;
-        }
-        $scope.addSub = function (netid) {
-            $http.post("/senate/api/user/sub", {
-                "subNetid": netid,
-                "senatorNetid": $scope.selectedRow.netid,
-                "group": $scope.selectedRow.group
-            }).success(function(data){
-				$("#attendenceSub").modal('hide');
-				getUsers();
-            });
-        }
 	}])
 }());
