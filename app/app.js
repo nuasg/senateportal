@@ -10,7 +10,6 @@
 				})
 				.state("senate", {
 					url: "/senate",
-					controller: "HomeController",
 					views: {
 						"": {
 							templateUrl: "app/senate/senate.html",

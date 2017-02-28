@@ -2,7 +2,8 @@
 	angular.module("senator")
 	.controller("HomeController",["$scope", "$state", "$http", "DataFactory", function($scope, $state, $http, DataFactory){
         $http.get("/senate/api/whoami").success(function(user) {
-            $scope.user = user;
+			
+            $scope.canSub = !user.sub;
             if (user.role === "Admin") {
                 $state.go("admin");
             } else {
