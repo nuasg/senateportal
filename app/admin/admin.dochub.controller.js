@@ -95,9 +95,9 @@
 			var arr = save.title.split(" ");
 			if (arr[0] == "Amendment") {
 				if (arr[1] == "to") {
-					save.title = "Amendment 2 "
+					save.title = "Amendment 2 ";
 				} else {
-					save.title = "Amendment " + (parseInt(arr[1]) + 1)
+					save.title = "Amendment " + (parseInt(arr[1]) + 1) + " ";
 				}
 				save.title += arr.slice(2).join(" ");
 			} else {
