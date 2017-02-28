@@ -22,14 +22,17 @@
                 $scope.getAttendence(selected.start_date,selected.end_date);  
             }
         });
-        $http.get("/senate/api/user").success(function(data) {
-            $scope.users = data.filter(function(item){
-                if (item.role == "Senator" && item.firstName && item.active) {
-                    item.present = false;
-                    return item;
-                }
+        var getUsers = function () {
+            $http.get("/senate/api/user").success(function(data) {
+                $scope.users = data.filter(function(item){
+                    if (item.role == "Senator" && item.firstName && item.active) {
+                        item.present = false;
+                        return item;
+                    }
+                });
             });
-        });
+        }
+        getUsers();
         var getAggregate = function(start, end){
             var query = "senate/api/attendence/aggregate/" + start + "/" + end;
             $http.get(query).success(function(data){
@@ -84,6 +87,19 @@
                 .success(function(data){
                     $scope.session = data;
                 });
+        }
+        $scope.sub = function (row) {
+            $scope.selectedRow = row;
+        }
+        $scope.addSub = function (netid) {
+            $http.post("/senate/api/user/sub", {
+                "subNetid": netid,
+                "senatorNetid": $scope.selectedRow.netid,
+                "group": $scope.selectedRow.group
+            }).success(function(data){
+				$("#attendenceSub").modal('hide');
+				getUsers();
+            });
         }
 	}])
 }());

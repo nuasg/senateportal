@@ -104,6 +104,13 @@
                   ng-click = "row.present = true">
                   Mark Present
                 </div>
+                <div class="btn btn-default" 
+                    ng-if="!row.sub"
+                    data-toggle="modal" 
+									  data-target="#attendenceSub"
+                    ng-click="sub(row)">
+                  Add Sub
+                </div>
               </td>
             </tr>
           </tbody>
@@ -151,4 +158,31 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="attendenceSub">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Substitute</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<div class="form-horizontal">
+						<div class="form-group">
+						<label class="col-md-2 col-md-offset-2 control-label">Netid:</label>
+						<div class="col-md-4">
+							<input type="text" class="form-control" ng-model="subNetid">
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+				<button type="button" class="btn btn-success" ng-click="addSub(subNetid)">Submit</button>
+			</div>
+		</div>
+	</div>
 </div>
