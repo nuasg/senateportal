@@ -5,34 +5,34 @@
 			$stateProvider
 				.state("home", {
 					url: "/",
-					templateUrl: "app/home/home.html",
+					templateUrl: "senate/app/home/home.html",
 					controller: "HomeController"
 				})
 				.state("senate", {
 					url: "/senate",
 					views: {
 						"": {
-							templateUrl: "app/senate/senate.html",
+							templateUrl: "senate/app/senate/senate.html",
 							controller: "HomeController"
 						},
 						"dash@senate": {
-							templateUrl: "app/senate/dash.html",
+							templateUrl: "senate/app/senate/dash.html",
 							controller: "SenateDashController"
 						},
 						"docs@senate": {
-							templateUrl: "app/senate/docs.html",
+							templateUrl: "senate/app/senate/docs.html",
 							controller: "SenateDocsController"
 						},
 						"polls@senate": {
-							templateUrl: "app/senate/polls.html",
+							templateUrl: "senate/app/senate/polls.html",
 							controller: "SenateDashController"
 						},
 						"results@senate": {
-							templateUrl: "app/senate/results.html",
+							templateUrl: "senate/app/senate/results.html",
 							controller: "SenateDocsController"
 						},
 						"sub@senate": {
-							templateUrl: "app/senate/sub.html",
+							templateUrl: "senate/app/senate/sub.html",
 							controller: "SenateSubController"
 						}
 					}
@@ -41,31 +41,31 @@
 					url: "/admin",
 					views: {
 						"": {
-							templateUrl: "app/admin/admin.html",
+							templateUrl: "senate/app/admin/admin.html",
 							controller: "HomeController"
 						},
 						"results@admin": {
-							templateUrl: "app/senate/results.html",
+							templateUrl: "senate/app/senate/results.html",
 							controller: "SenateDocsController"
 						},
 						"docHub@admin": {
-							templateUrl: "app/admin/dochub.html",
+							templateUrl: "senate/app/admin/dochub.html",
 							controller: "AdminDochubController"
 						},
 						"agendas@admin": {
-							templateUrl: "app/admin/agendas.html",
+							templateUrl: "senate/app/admin/agendas.html",
 							controller: "AdminAgendasController"
 						},
 						"manage@admin": {
-							templateUrl: "app/admin/manage.html",
+							templateUrl: "senate/app/admin/manage.html",
 							controller: "AdminManageController"
 						},
 						"configure@admin": {
-							templateUrl: "app/admin/configure.html",
+							templateUrl: "senate/app/admin/configure.html",
 							controller: "AdminConfigureController"
 						},
                         "attendence@admin": {
-                            templateUrl: "app/admin/attendence.html",
+                            templateUrl: "senate/app/admin/attendence.html",
                             controller: "AdminAttendenceController"
                         }
 					}
