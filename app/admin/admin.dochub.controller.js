@@ -92,7 +92,17 @@
             delete save["$$hashKey"];
             delete save["__v"];
             delete save["_id"];
-            save.title = "Amendment to " + save.title;
+			var arr = save.title.split(" ");
+			if (arr[0] == "Amendment") {
+				if (arr[1] == "to") {
+					save.title = "Amendment 2 "
+				} else {
+					save.title = "Amendment " + (parseInt(arr[1]) + 1)
+				}
+				save.title += arr.slice(2).join(" ");
+			} else {
+				save.title = "Amendment to " + save.title;
+			}
             $http.post("/senate/api/document", save).success(function(){
                 pullData();
             });
