@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Legislation = require("../models/legislation");
 var Document = require("../models/document");
-
+var _ = require('lodash');
 
 const findDoc = (id, responseFunc) => {
     Document.
@@ -97,7 +97,23 @@ module.exports.getByUser = function (req, res) {
         }).
         exec().
         then(function(legis){
-            res.json(legis);
+            res.json(_(legis).
+                map(function(leg){
+                    return Document.
+                        findOne({
+                            _id: leg.documentId
+                        }).
+                        then(function(doc){
+                            leg.docName = doc.title;
+                            return leg;
+                        })
+                }).
+                filter(function(data){
+                    if (data !== null) {
+                        return data;
+                    }
+                })
+            );
         }).
         catch(function(err){
             res.sendStatus(err);
