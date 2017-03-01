@@ -89,3 +89,17 @@ module.exports.deleteLegislation = function (req, res) {
             res.sendStatus(err);
         });
 }
+
+module.exports.getByUser = function (req, res) {
+    Legislation.
+        find({
+            netid: req.params.netid
+        }).
+        exec().
+        then(function(legis){
+            res.json(legis);
+        }).
+        catch(function(err){
+            res.sendStatus(err);
+        });
+}

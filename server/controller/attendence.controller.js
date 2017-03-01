@@ -133,3 +133,17 @@ module.exports.sessionAttendence = function (req, res) {
             res.sendStatus(err);
         });
 }
+
+module.exports.individualAttendence = function(req, res) {
+    Attendence.
+        find({
+            netid: req.params.netid
+        }).
+        exec().
+        then(function(attendences){
+            res.json(attendences);
+        }).
+        catch(function(err) {
+            res.sendStatus(err);
+        });
+}
