@@ -141,3 +141,21 @@ module.exports.getdocumentByDateRange = function(req, res) {
 		});
 }
 
+module.exports.documentByDateRange = function(req, res) {
+	var start = new Date(req.params.start);
+	var end = new Date(req.params.end);
+	Document.
+		find({
+			weekOf: {
+				$gte: start,
+				$lte: end
+			}
+		}).
+		exec().
+		then(function (data) {
+			res.json(data);
+		}).
+		catch(function (err) {
+			res.send(err);
+		});
+}

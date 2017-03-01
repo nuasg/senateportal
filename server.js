@@ -139,6 +139,7 @@ app.put("//api/document", checkCookie, adminAccess, documentController.updateDoc
 // Public facing API
 app.get("//api/document", documentController.findAllDocuments);
 app.get("//api/document/:start/:end", documentController.getdocumentByDateRange);
+app.get("//api/document/public/:start/:end", documentController.documentByDateRange);
 // Users
 // app.get("//api/user", userController.authenticate, userController.getAllUsers);
 app.get("//api/user/sub/:netid", checkCookie, userController.findSub);
