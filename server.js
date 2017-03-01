@@ -170,6 +170,6 @@ app.post("//api/attendence", checkCookie, adminAccess, attendenceController.addA
 app.get("//api/attendence/aggregate/:start/:end", checkCookie, adminAccess, attendenceController.getAttendenceByDateRange);
 app.get("//api/attendence/quarter/:start/:end", checkCookie, adminAccess, attendenceController.getAttendence);
 app.get("//api/attendence/session/:date/:period", checkCookie, adminAccess, attendenceController.sessionAttendence);
-app.get("//api/attendence/:netid", attendenceController.individualAttendence);
+app.get("//api/attendence/:firstName/:lastName", attendenceController.individualAttendence);
 
 app.listen("5004");

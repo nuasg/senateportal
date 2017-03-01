@@ -137,7 +137,8 @@ module.exports.sessionAttendence = function (req, res) {
 module.exports.individualAttendence = function(req, res) {
     Attendence.
         find({
-            netid: req.params.netid
+            firstName: req.params.firstName,
+            lastName: req.params.lastName
         }).
         exec().
         then(function(attendences){
