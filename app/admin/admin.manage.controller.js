@@ -46,9 +46,12 @@
 			$('.modal').modal('hide')
 			for (var i=0; i<keys.length; i++) {
 				var value = data[keys[i]];
-				if (value === null || value === "") {
+				if ((value === null || value === "") && (keys[i] != "sub")) {
 					test = false;
 				}
+			}
+			if (data.sub == "") {
+				data.sub = null;
 			}
 			if (test) {
 				$http.put("/senate/api/user", data).success(function(){
