@@ -104,10 +104,18 @@ module.exports.getByUser = function (req, res) {
                     then(function(doc){
                         leg._doc.docName = doc.title;
                         return leg;
-                    })
+                    }).
+                    catch(function(err){
+                        return undefined;
+                    });
             });
             Promise.all(promises).then(function(data){
-                res.json(data);
+                var final = data.filter(function(leg){
+                    if (leg !== undefined) {
+                        return leg;
+                    }
+                });
+                res.json(final);
             });
         }).
         catch(function(err){
