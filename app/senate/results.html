@@ -16,7 +16,7 @@
               style="cursor:pointer;"
               ng-click="click(key, value)"
               data-toggle="modal" 
-              data-target="#results">
+              data-target="#votingResults">
                 <td>{{value.date | date: 'shortDate'}}</td>
                 <td><a target="_blank" href="{{value.link}}">{{key}}</a></td>
                 <td>{{value.Yea.length}}</td>
@@ -27,7 +27,7 @@
         </tbody>
     </table>
 </div>
-<div class="modal fade nodocs" id="results">
+<div class="modal fade nodocs" id="votingResults">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
