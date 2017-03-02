@@ -12,14 +12,45 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="(key,value) in legislationToVoteMap">
+          <tr ng-repeat="(key,value) in legislationToVoteMap" 
+              style="cursor:pointer;"
+              ng-click="click(key, value)"
+              data-toggle="modal" 
+              data-target="#results">
                 <td>{{value.date | date: 'shortDate'}}</td>
-                <td>{{key}}</td>
-                <td>{{value.Yea}}</td>
-                <td>{{value.Nay}}</td>
-                <td>{{value.Abstain}}</td>
-                <td><b>{{value.Yea + value.Nay + value.Abstain}}</b></td>
+                <td><a target="_blank" href="{{value.link}}">{{key}}</a></td>
+                <td>{{value.Yea.length}}</td>
+                <td>{{value.Nay.length}}</td>
+                <td>{{value.Abstain.length}}</td>
+                <td><b>{{value.Yea.length + value.Nay.length + value.Abstain.length}}</b></td>
             </tr>
         </tbody>
     </table>
-<div class="container">
+</div>
+<div class="modal fade nodocs" id="results">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">{{selectedKey}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4">
+            <h3>Yeas: {{selectedValue.Yea.length}}</h3>
+            <p ng-repeat="yea in selectedValue.Yea">{{yea}}</p>
+          </div>
+          <div class="col-md-4">
+            <h3>Abstains: {{selectedValue.Abstain.length}}</h3>
+            <p ng-repeat="ab in selectedValue.Abstain">{{ab}}</p>
+          </div>
+           <div class="col-md-4">
+            <h3>Nays: {{selectedValue.Nay.length}}</h3>
+            <p ng-repeat="nay in selectedValue.Nay">{{nay}}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
