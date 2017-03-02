@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var Legislation = require("../models/legislation");
 var Document = require("../models/document");
+var User = require("../models/user");
 
 const findDoc = (id, responseFunc) => {
     Document.
@@ -13,15 +14,29 @@ const findDoc = (id, responseFunc) => {
 };
 
 module.exports.addLegislation = function (req, res) {
-    req.body.netid = req.user.nuIdTag;
-    findDoc(req.body.documentId,  function (doc) {
-        if (doc.live) {
-            Legislation.create(req.body);
-            res.sendStatus(200);
-        } else {
-            res.sendStatus(412);
-        }
-    })
+    User.
+        find({
+            netid: req.user.nuIdTag
+        }).
+        exec().
+        then(function(user){
+            if (user.active) {
+                req.body.netid = user.netid;
+                findDoc(req.body.documentId,  function (doc) {
+                    if (doc.live) {
+                        Legislation.create(req.body);
+                        res.sendStatus(200);
+                    } else {
+                        res.sendStatus(412);
+                    }
+                });
+            } else {
+                res.sendStatus(500);
+            }
+        }).
+        catch(function(err) {
+            res.sendStatus(err);
+        });
 }
 
 module.exports.getLegislations = function (req, res) {
